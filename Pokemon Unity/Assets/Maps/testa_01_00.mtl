@@ -1,0 +1,40 @@
+newmtl sea_line02
+map_Kd sea_line02.png
+map_d sea_line02.png
+
+newmtl grass01
+map_Kd grass01.png
+map_d grass01.png
+
+newmtl pond_line
+map_Kd pond_line.png
+map_d pond_line.png
+
+newmtl rock01
+map_Kd rock01.png
+map_d rock01.png
+
+newmtl wall01_d
+map_Kd wall01_d.png
+map_d wall01_d.png
+
+newmtl wall01_g
+map_Kd wall01_g.png
+map_d wall01_g.png
+
+newmtl cavehole
+map_Kd cavehole.png
+map_d cavehole.png
+
+newmtl grass01_a
+map_Kd grass01_a.png
+map_d grass01_a.png
+
+newmtl flower01
+map_Kd flower01.png
+map_d flower01.png
+
+newmtl flower02
+map_Kd flower02.png
+map_d flower02.png
+

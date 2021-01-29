@@ -1,0 +1,16 @@
+newmtl grass01
+map_Kd grass01.png
+map_d grass01.png
+
+newmtl rock01
+map_Kd rock01.png
+map_d rock01.png
+
+newmtl sea_rock_m
+map_Kd sea_rock_m.png
+map_d sea_rock_m.png
+
+newmtl wallkn_g
+map_Kd wallkn_g.png
+map_d wallkn_g.png
+
