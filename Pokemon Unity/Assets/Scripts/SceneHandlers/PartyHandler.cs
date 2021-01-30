@@ -130,7 +130,7 @@ public class PartyHandler : MonoBehaviour
                 }
                 genderShadow[i].text = gender[i].text;
                 HPBar[i].pixelInset = new Rect(HPBar[i].pixelInset.x, HPBar[i].pixelInset.y,
-                    Mathf.FloorToInt(240f * ((float) selectedPokemon.getCurrentHP() / (float) selectedPokemon.getHP())),
+                    Mathf.FloorToInt(48f * ((float) selectedPokemon.getCurrentHP() / (float) selectedPokemon.getHP())),
                     HPBar[i].pixelInset.height);
 
                 if ((float) selectedPokemon.getCurrentHP() < ((float) selectedPokemon.getHP() / 4f))
@@ -428,42 +428,42 @@ public class PartyHandler : MonoBehaviour
     {
         while (running)
         {
-            icon[0].border = new RectOffset(160, 0, 0, 0);
-            icon[1].border = new RectOffset(160, 0, 0, 0);
-            icon[2].border = new RectOffset(160, 0, 0, 0);
-            icon[3].border = new RectOffset(160, 0, 0, 0);
-            icon[4].border = new RectOffset(160, 0, 0, 0);
-            icon[5].border = new RectOffset(160, 0, 0, 0);
+            icon[0].border = new RectOffset(32, 0, 0, 0);
+            icon[1].border = new RectOffset(32, 0, 0, 0);
+            icon[2].border = new RectOffset(32, 0, 0, 0);
+            icon[3].border = new RectOffset(32, 0, 0, 0);
+            icon[4].border = new RectOffset(32, 0, 0, 0);
+            icon[5].border = new RectOffset(32, 0, 0, 0);
             yield return new WaitForSeconds(0.15f);
-            icon[0].border = new RectOffset(160, 0, 0, 0);
-            icon[1].border = new RectOffset(160, 0, 0, 0);
-            icon[2].border = new RectOffset(160, 0, 0, 0);
-            icon[3].border = new RectOffset(160, 0, 0, 0);
-            icon[4].border = new RectOffset(160, 0, 0, 0);
-            icon[5].border = new RectOffset(160, 0, 0, 0);
+            icon[0].border = new RectOffset(32, 0, 0, 0);
+            icon[1].border = new RectOffset(32, 0, 0, 0);
+            icon[2].border = new RectOffset(32, 0, 0, 0);
+            icon[3].border = new RectOffset(32, 0, 0, 0);
+            icon[4].border = new RectOffset(32, 0, 0, 0);
+            icon[5].border = new RectOffset(32, 0, 0, 0);
             if (currentPosition < 6)
             {
-                icon[currentPosition].border = new RectOffset(0, 160, 0, 0);
+                icon[currentPosition].border = new RectOffset(0, 32, 0, 0);
             }
             yield return new WaitForSeconds(0.15f);
 
-            icon[0].border = new RectOffset(0, 160, 0, 0);
-            icon[1].border = new RectOffset(0, 160, 0, 0);
-            icon[2].border = new RectOffset(0, 160, 0, 0);
-            icon[3].border = new RectOffset(0, 160, 0, 0);
-            icon[4].border = new RectOffset(0, 160, 0, 0);
-            icon[5].border = new RectOffset(0, 160, 0, 0);
+            icon[0].border = new RectOffset(0, 32, 0, 0);
+            icon[1].border = new RectOffset(0, 32, 0, 0);
+            icon[2].border = new RectOffset(0, 32, 0, 0);
+            icon[3].border = new RectOffset(0, 32, 0, 0);
+            icon[4].border = new RectOffset(0, 32, 0, 0);
+            icon[5].border = new RectOffset(0, 32, 0, 0);
             if (currentPosition < 6)
             {
-                icon[currentPosition].border = new RectOffset(160, 0, 0, 0);
+                icon[currentPosition].border = new RectOffset(32, 0, 0, 0);
             }
             yield return new WaitForSeconds(0.15f);
-            icon[0].border = new RectOffset(0, 160, 0, 0);
-            icon[1].border = new RectOffset(0, 160, 0, 0);
-            icon[2].border = new RectOffset(0, 160, 0, 0);
-            icon[3].border = new RectOffset(0, 160, 0, 0);
-            icon[4].border = new RectOffset(0, 160, 0, 0);
-            icon[5].border = new RectOffset(0, 160, 0, 0);
+            icon[0].border = new RectOffset(0, 32, 0, 0);
+            icon[1].border = new RectOffset(0, 32, 0, 0);
+            icon[2].border = new RectOffset(0, 32, 0, 0);
+            icon[3].border = new RectOffset(0, 32, 0, 0);
+            icon[4].border = new RectOffset(0, 32, 0, 0);
+            icon[5].border = new RectOffset(0, 32, 0, 0);
             yield return new WaitForSeconds(0.15f);
         }
     }
@@ -695,16 +695,16 @@ public class PartyHandler : MonoBehaviour
 
                                             Dialog.drawDialogBox();
                                             yield return
-                                                Dialog.StartCoroutine("drawText",
-                                                    "Gave " + chosenItem + " to " + selectedPokemon.getName() + ",");
+                                                Dialog.StartCoroutine(Dialog.drawText(
+                                                    "Gave " + chosenItem + " to " + selectedPokemon.getName() + ","));
                                             while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                                             {
                                                 yield return null;
                                             }
                                             Dialog.drawDialogBox();
                                             yield return
-                                                Dialog.StartCoroutine("drawText",
-                                                    "and received " + receivedItem + " in return.");
+                                                Dialog.StartCoroutine(Dialog.drawText(
+                                                    "and received " + receivedItem + " in return."));
                                             while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                                             {
                                                 yield return null;
@@ -783,8 +783,7 @@ public class PartyHandler : MonoBehaviour
 
                                         Dialog.drawDialogBox();
                                         yield return
-                                            Dialog.StartCoroutine("drawText",
-                                                "Gave " + chosenItem + " to " + selectedPokemon.getName() + ".");
+                                            Dialog.StartCoroutine(Dialog.drawText("Gave " + chosenItem + " to " + selectedPokemon.getName() + "."));
                                         while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                                         {
                                             yield return null;
@@ -828,7 +827,7 @@ public class PartyHandler : MonoBehaviour
             }
             yield return null;
         }
-        StopCoroutine("animateIcons");
+        StopCoroutine(animateIcons());
         //yield return new WaitForSeconds(sceneTransition.FadeOut());
         yield return StartCoroutine(ScreenFade.main.Fade(false, ScreenFade.defaultSpeed));
         GlobalVariables.global.resetFollower();
