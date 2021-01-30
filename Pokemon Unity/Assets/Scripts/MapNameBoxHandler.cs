@@ -25,7 +25,7 @@ public class MapNameBoxHandler : MonoBehaviour
 
     void Start()
     {
-        mapName.position = new Vector3(0, 0.17f, mapName.position.z);
+        mapName.position = new Vector3(0, 0.17f * 5, mapName.position.z);
     }
 
     public void display(Texture boxTexture, string name, Color textColor)
@@ -43,9 +43,9 @@ public class MapNameBoxHandler : MonoBehaviour
 
     private IEnumerator displayCoroutine(Texture boxTexture, string name, Color textColor)
     {
-        if (mapName.position.y != 0.17f)
+        if (mapName.position.y != 0.17f * 5)
         {
-            increment = mapName.position.y / 0.17f;
+            increment = mapName.position.y / 0.17f * 5;
             while (increment < 1)
             {
                 increment += (1 / speed) * Time.deltaTime;
@@ -53,7 +53,7 @@ public class MapNameBoxHandler : MonoBehaviour
                 {
                     increment = 1;
                 }
-                mapName.position = new Vector3(0, 0.17f * increment, mapName.position.z);
+                mapName.position = new Vector3(0, 0.85f * increment, mapName.position.z);
                 yield return null;
             }
         }
@@ -70,7 +70,7 @@ public class MapNameBoxHandler : MonoBehaviour
             {
                 increment = 1;
             }
-            mapName.position = new Vector3(0, 0.17f - (0.17f * increment), mapName.position.z);
+            mapName.position = new Vector3(0, 0.17f * 5 - (0.85f * increment), mapName.position.z);
             yield return null;
         }
 
@@ -84,7 +84,7 @@ public class MapNameBoxHandler : MonoBehaviour
             {
                 increment = 1;
             }
-            mapName.position = new Vector3(0, 0.17f * increment, mapName.position.z);
+            mapName.position = new Vector3(0, 0.85f * increment, mapName.position.z);
             yield return null;
         }
     }
