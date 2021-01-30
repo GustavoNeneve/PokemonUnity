@@ -92,9 +92,9 @@ public class MainMenuHandler : MonoBehaviour
 
         Vector2[] highlightPositions = new Vector2[]
         {
-            new Vector2(132*5, 143*5),
-            new Vector2(147*5, 143*5),
-            new Vector2(162*5, 143*5)
+            new Vector2(132, 143),
+            new Vector2(147, 143),
+            new Vector2(162, 143)
         };
         fileSelected.pixelOffset = highlightPositions[selectedFile];
         fileSelected.text = "" + (selectedFile + 1);
@@ -144,12 +144,12 @@ public class MainMenuHandler : MonoBehaviour
         {
             for (int i = 0; i < 6; i++)
             {
-                pokemon[i].border = new RectOffset(32*5, 0, 0, 0);
+                pokemon[i].border = new RectOffset(32, 0, 0, 0);
             }
             yield return new WaitForSeconds(0.15f);
             for (int i = 0; i < 6; i++)
             {
-                pokemon[i].border = new RectOffset(0, 32*5, 0, 0);
+                pokemon[i].border = new RectOffset(0, 32, 0, 0);
             }
             yield return new WaitForSeconds(0.15f);
         }
