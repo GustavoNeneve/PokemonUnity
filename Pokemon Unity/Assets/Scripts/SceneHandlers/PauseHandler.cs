@@ -70,8 +70,8 @@ public class PauseHandler : MonoBehaviour
 
     void Start()
     {
-        pauseTop.pixelInset = new Rect(0, 960 , pauseTop.pixelInset.width, pauseTop.pixelInset.height);
-        pauseBottom.pixelInset = new Rect(0, -480, pauseBottom.pixelInset.width, pauseBottom.pixelInset.height);
+        pauseTop.pixelInset = new Rect(0, 192, pauseTop.pixelInset.width, pauseTop.pixelInset.height);
+        pauseBottom.pixelInset = new Rect(0, -96, pauseBottom.pixelInset.width, pauseBottom.pixelInset.height);
 
         setSelectedText("");
 
@@ -104,20 +104,20 @@ public class PauseHandler : MonoBehaviour
             {
                 increment = 1;
             }
-            pauseBottom.pixelInset = new Rect(pauseBottom.pixelInset.x, -480 + (increment * 480),
+            pauseBottom.pixelInset = new Rect(pauseBottom.pixelInset.x, -96 + (increment * 96),
                 pauseBottom.pixelInset.width, pauseBottom.pixelInset.height);
-            pauseTop.pixelInset = new Rect(pauseTop.pixelInset.x, 960  - (increment * 480), pauseTop.pixelInset.width,
+            pauseTop.pixelInset = new Rect(pauseTop.pixelInset.x, 192 - (increment * 96), pauseTop.pixelInset.width,
                 pauseTop.pixelInset.height);
             iconPokedex.transform.position = new Vector3(iconPokedex.transform.position.x,
-                -0.0833f + (increment * 1.4167f), 1);
-            iconParty.transform.position = new Vector3(iconParty.transform.position.x, -0.0833f + (increment * 1.4167f),
+                -0.0833f + (increment * 0.4167f), 1);
+            iconParty.transform.position = new Vector3(iconParty.transform.position.x, -0.0833f + (increment * 0.4167f),
                 1);
-            iconBag.transform.position = new Vector3(iconBag.transform.position.x, -0.0833f + (increment * 1.4167f), 1);
+            iconBag.transform.position = new Vector3(iconBag.transform.position.x, -0.0833f + (increment * 0.4167f), 1);
             iconTrainer.transform.position = new Vector3(iconTrainer.transform.position.x,
-                4.4337f - (increment * 1.0835f), 1);
-            iconSave.transform.position = new Vector3(iconSave.transform.position.x, 4.4337f - (increment * 1.0835f), 1);
+                1.0833f - (increment * 0.4167f), 1);
+            iconSave.transform.position = new Vector3(iconSave.transform.position.x, 1.0833f - (increment * 0.4167f), 1);
             iconSettings.transform.position = new Vector3(iconSettings.transform.position.x,
-                4.4337f - (increment * 1.0835f), 1);
+                1.0833f - (increment * 0.4167f), 1);
             yield return null;
         }
     }
@@ -133,20 +133,20 @@ public class PauseHandler : MonoBehaviour
             {
                 increment = 1;
             }
-            pauseBottom.pixelInset = new Rect(pauseBottom.pixelInset.x, 0 - (increment * 480),
+            pauseBottom.pixelInset = new Rect(pauseBottom.pixelInset.x, 0 - (increment * 96),
                 pauseBottom.pixelInset.width, pauseBottom.pixelInset.height);
-            pauseTop.pixelInset = new Rect(pauseTop.pixelInset.x, 480 + (increment * 480), pauseTop.pixelInset.width,
+            pauseTop.pixelInset = new Rect(pauseTop.pixelInset.x, 96 + (increment * 96), pauseTop.pixelInset.width,
                 pauseTop.pixelInset.height);
             iconPokedex.transform.position = new Vector3(iconPokedex.transform.position.x,
-                0.3333f - (increment * 0.24007f), 1);
-            iconParty.transform.position = new Vector3(iconParty.transform.position.x, 0.3333f - (increment * 0.24007f),
+                0.3333f - (increment * 0.4167f), 1);
+            iconParty.transform.position = new Vector3(iconParty.transform.position.x, 0.3333f - (increment * 0.4167f),
                 1);
-            iconBag.transform.position = new Vector3(iconBag.transform.position.x, 0.3333f - (increment * 0.24007f), 1);
+            iconBag.transform.position = new Vector3(iconBag.transform.position.x, 0.3333f - (increment * 0.4167f), 1);
             iconTrainer.transform.position = new Vector3(iconTrainer.transform.position.x,
-                3.35f + (increment * 0.24007f), 1);
-            iconSave.transform.position = new Vector3(iconSave.transform.position.x, 3.35f + (increment * 0.24007f), 1);
+                0.6667f + (increment * 0.4167f), 1);
+            iconSave.transform.position = new Vector3(iconSave.transform.position.x, 0.6667f + (increment * 0.4167f), 1);
             iconSettings.transform.position = new Vector3(iconSettings.transform.position.x,
-                3.35f + (increment * 0.24007f), 1);
+                0.6667f + (increment * 0.4167f), 1);
             yield return null;
         }
     }
@@ -228,12 +228,12 @@ public class PauseHandler : MonoBehaviour
         iconSave.angle = 0;
         iconSettings.angle = 0;
 
-        iconPokedex.size = new Vector2(160, 160);
-        iconParty.size = new Vector2(160, 160);
-        iconBag.size = new Vector2(160, 160);
-        iconTrainer.size = new Vector2(160, 160);
-        iconSave.size = new Vector2(160, 160);
-        iconSettings.size = new Vector2(160, 160);
+        iconPokedex.size = new Vector2(32, 32);
+        iconParty.size = new Vector2(32, 32);
+        iconBag.size = new Vector2(32, 32);
+        iconTrainer.size = new Vector2(32, 32);
+        iconSave.size = new Vector2(32, 32);
+        iconSettings.size = new Vector2(32, 32);
 
         if (targetIcon != null)
         {
@@ -249,7 +249,7 @@ public class PauseHandler : MonoBehaviour
                 {
                     increment = 1;
                 }
-                targetIcon.size = new Vector2(160 + (80 * increment), 160 + (80 * increment));
+                targetIcon.size = new Vector2(32 + (16 * increment), 32 + (16 * increment));
                 yield return null;
             }
             increment = 0f;
@@ -260,7 +260,7 @@ public class PauseHandler : MonoBehaviour
                 {
                     increment = 1;
                 }
-                targetIcon.size = new Vector2(240 - (80 * increment), 240 - (80 * increment));
+                targetIcon.size = new Vector2(48 - (16 * increment), 48 - (16 * increment));
                 yield return null;
             }
         }
@@ -497,7 +497,7 @@ public class PauseHandler : MonoBehaviour
                         yield return StartCoroutine(Dialog.drawText("Would you like to save the game?"));
                         Dialog.drawChoiceBoxNo();
                         yield return new WaitForSeconds(0.2f);
-                        yield return StartCoroutine(Dialog.choiceNavigateNo());
+                        yield return StartCoroutine(Dialog.choiceNavigate(0));
                         int chosenIndex = Dialog.chosenIndex;
                         if (chosenIndex == 1)
                         {
