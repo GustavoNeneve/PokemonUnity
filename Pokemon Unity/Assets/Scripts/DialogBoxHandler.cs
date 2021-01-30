@@ -39,7 +39,7 @@ public class DialogBoxHandler : MonoBehaviour
     public bool hideDialogOnStart = true;
     public bool hideChoiceOnStart = true;
 
-    public int defaultChoiceWidth = 430;
+    public int defaultChoiceWidth = 86;
     public int defaultChoiceY = 0;
     public int defaultDialogLines = 2;
 
@@ -78,23 +78,16 @@ public class DialogBoxHandler : MonoBehaviour
 
     void Start()
     {
-        if (hideDialogOnStart)
-        {
-            DialogBox.SetActive(false);
-        }
-        if (hideChoiceOnStart)
-        {
-            ChoiceBox.SetActive(false);
-        }
+        DialogBox.SetActive(!hideDialogOnStart);
+        ChoiceBox.SetActive(!hideChoiceOnStart);
     }
 
-    public void drawDialogBox()
-    {
-        drawDialogBox(defaultDialogLines);
-    }
 
-    public void drawDialogBox(int lines)
+    public void drawDialogBox(int lines = -1)
     {
+        if (lines < 0)
+            lines = defaultDialogLines;
+
         DialogBox.transform.position = new Vector3(0, 0, DialogBox.transform.position.z);
         DialogBox.SetActive(true);
         DialogBoxBorder.texture = Resources.Load<Texture>("Frame/dialog" + PlayerPrefs.GetInt("frameStyle"));
@@ -144,23 +137,17 @@ public class DialogBoxHandler : MonoBehaviour
         yield return null;
     }
 
-    public void drawChoiceBox()
-    {
-        //No parametres means simply Yes/No
-        drawChoiceBox(0);
-    }
-
-    public void drawChoiceBox(int customYOffset)
+    public void drawChoiceBox(int customYOffset = 0)
     {
         //No other parametres means simply Yes/No
         ChoiceBox.SetActive(true);
         ChoiceBoxTexture.texture = Resources.Load<Texture>("Frame/choice" + PlayerPrefs.GetInt("frameStyle"));
-        ChoiceBoxTexture.pixelInset = new Rect(1356 - defaultChoiceWidth - 1, defaultChoiceY + customYOffset,
-            defaultChoiceWidth, 220f);
-        ChoiceBoxSelect.pixelInset = new Rect(1356 - defaultChoiceWidth + 7, ChoiceBoxTexture.pixelInset.y + 23f,
+        ChoiceBoxTexture.pixelInset = new Rect(342 - defaultChoiceWidth - 1, defaultChoiceY + customYOffset,
+            defaultChoiceWidth, 44f);
+        ChoiceBoxSelect.pixelInset = new Rect(342 - defaultChoiceWidth + 7, ChoiceBoxTexture.pixelInset.y + 23f,
             ChoiceBoxSelect.pixelInset.width, ChoiceBoxSelect.pixelInset.height);
-        ChoiceBoxText.pixelOffset = new Vector2(1356 - defaultChoiceWidth + 21, ChoiceBoxTexture.pixelInset.y + 65f);
-        ChoiceBoxTextShadow.pixelOffset = new Vector2(1356 - defaultChoiceWidth + 22, ChoiceBoxTexture.pixelInset.y + 60f);
+        ChoiceBoxText.pixelOffset = new Vector2(342 - defaultChoiceWidth + 21, ChoiceBoxTexture.pixelInset.y + 13f);
+        ChoiceBoxTextShadow.pixelOffset = new Vector2(342 - defaultChoiceWidth + 22, ChoiceBoxTexture.pixelInset.y + 12f);
         ChoiceBoxText.text = "Yes \nNo";
         ChoiceBoxTextShadow.text = "Yes \nNo";
     }
@@ -170,51 +157,29 @@ public class DialogBoxHandler : MonoBehaviour
         //set default position to 0
         ChoiceBox.SetActive(true);
         ChoiceBoxTexture.texture = Resources.Load<Texture>("Frame/choice" + PlayerPrefs.GetInt("frameStyle"));
-        ChoiceBoxTexture.pixelInset = new Rect(1356 - defaultChoiceWidth - 1, defaultChoiceY, defaultChoiceWidth, 220f);
-        ChoiceBoxSelect.pixelInset = new Rect(1356 - defaultChoiceWidth + 0, ChoiceBoxTexture.pixelInset.y + 45f,
+        ChoiceBoxTexture.pixelInset = new Rect(342 - defaultChoiceWidth - 1, defaultChoiceY, defaultChoiceWidth, 44f);
+        ChoiceBoxSelect.pixelInset = new Rect(342 - defaultChoiceWidth + 7, ChoiceBoxTexture.pixelInset.y + 9f,
             ChoiceBoxSelect.pixelInset.width, ChoiceBoxSelect.pixelInset.height);
-        ChoiceBoxText.pixelOffset = new Vector2(1356 - defaultChoiceWidth + 21, ChoiceBoxTexture.pixelInset.y + 65f);
-        ChoiceBoxTextShadow.pixelOffset = new Vector2(1356 - defaultChoiceWidth + 22, ChoiceBoxTexture.pixelInset.y + 60f);
+        ChoiceBoxText.pixelOffset = new Vector2(342 - defaultChoiceWidth + 21, ChoiceBoxTexture.pixelInset.y + 13f);
+        ChoiceBoxTextShadow.pixelOffset = new Vector2(342 - defaultChoiceWidth + 22, ChoiceBoxTexture.pixelInset.y + 12f);
         ChoiceBoxText.text = "Yes \nNo";
         ChoiceBoxTextShadow.text = "Yes \nNo";
     }
 
-    public void drawChoiceBox(string[] choices)
+    public void drawChoiceBox(string[] choices, int width = -1)
     {
-        ChoiceBox.SetActive(true);
-        ChoiceBoxTexture.texture = Resources.Load<Texture>("Frame/choice" + PlayerPrefs.GetInt("frameStyle"));
-        ChoiceBoxTexture.pixelInset = new Rect(1356 - defaultChoiceWidth - 1, defaultChoiceY, defaultChoiceWidth,
-            30f + (190f * (choices.Length - 1)));
-        ChoiceBoxSelect.pixelInset = new Rect(1356 - defaultChoiceWidth + 7,
-            ChoiceBoxTexture.pixelInset.y + 9f + (14f * (choices.Length - 1)), ChoiceBoxSelect.pixelInset.width,
-            ChoiceBoxSelect.pixelInset.height);
-        ChoiceBoxText.pixelOffset = new Vector2(1356 - defaultChoiceWidth + 21, ChoiceBoxTexture.pixelInset.y + 65f);
-        ChoiceBoxTextShadow.pixelOffset = new Vector2(1356 - defaultChoiceWidth + 22, ChoiceBoxTexture.pixelInset.y + 60f);
-        ChoiceBoxText.text = "";
-        ChoiceBoxTextShadow.text = "";
-        for (int i = 0; i < choices.Length; i++)
-        {
-            ChoiceBoxText.text += choices[i];
-            ChoiceBoxTextShadow.text = ChoiceBoxText.text;
-            if (i != choices.Length - 1)
-            {
-                ChoiceBoxText.text += "\n";
-                ChoiceBoxTextShadow.text = ChoiceBoxText.text;
-            }
-        }
-    }
+        if (width < 0)
+            width = defaultChoiceWidth;
 
-    public void drawChoiceBoxWidth(string[] choices, int width)
-    {
         ChoiceBox.SetActive(true);
         ChoiceBoxTexture.texture = Resources.Load<Texture>("Frame/choice" + PlayerPrefs.GetInt("frameStyle"));
-        ChoiceBoxTexture.pixelInset = new Rect(1356 - width - 1, defaultChoiceY, width,
-            30f + (190f * (choices.Length - 1)));
-        ChoiceBoxSelect.pixelInset = new Rect(1356 - width + 7,
+        ChoiceBoxTexture.pixelInset = new Rect(342 - width - 1, defaultChoiceY, width,
+            30f + (14f * (choices.Length - 1)));
+        ChoiceBoxSelect.pixelInset = new Rect(342 - width + 7,
             ChoiceBoxTexture.pixelInset.y + 9f + (14f * (choices.Length - 1)), ChoiceBoxSelect.pixelInset.width,
             ChoiceBoxSelect.pixelInset.height);
-        ChoiceBoxText.pixelOffset = new Vector2(1356 - width + 21, ChoiceBoxTexture.pixelInset.y + 65f);
-        ChoiceBoxTextShadow.pixelOffset = new Vector2(1356 - width + 22, ChoiceBoxTexture.pixelInset.y + 60f);
+        ChoiceBoxText.pixelOffset = new Vector2(342 - width + 21, ChoiceBoxTexture.pixelInset.y + 13f);
+        ChoiceBoxTextShadow.pixelOffset = new Vector2(342 - width + 22, ChoiceBoxTexture.pixelInset.y + 12f);
         ChoiceBoxText.text = "";
         ChoiceBoxTextShadow.text = "";
         for (int i = 0; i < choices.Length; i++)
@@ -373,7 +338,7 @@ public class DialogBoxHandler : MonoBehaviour
 
     public IEnumerator scrollText()
     {
-        float textPosDestination = DialogBoxText.pixelOffset.y + 45f; //the box must be scrolled up 14
+        float textPosDestination = DialogBoxText.pixelOffset.y + 14f; //the box must be scrolled up 14
         while (DialogBoxText.pixelOffset.y < textPosDestination)
         {
             if (Mathf.RoundToInt(DialogBoxText.pixelOffset.y) == textPosDestination - 5)
@@ -384,9 +349,9 @@ public class DialogBoxHandler : MonoBehaviour
                     //this involves splitting the string by it's line breaks
                 DialogBoxTextShadow.text = DialogBoxText.text;
                 textPosDestination -= 14f; //reduce destination and position by 14 to account for the removed line. 
-                DialogBoxText.pixelOffset = new Vector2(DialogBoxText.pixelOffset.x, DialogBoxText.pixelOffset.y - 45f);
+                DialogBoxText.pixelOffset = new Vector2(DialogBoxText.pixelOffset.x, DialogBoxText.pixelOffset.y - 14f);
                 DialogBoxTextShadow.pixelOffset = new Vector2(DialogBoxTextShadow.pixelOffset.x,
-                    DialogBoxTextShadow.pixelOffset.y - 45f);
+                    DialogBoxTextShadow.pixelOffset.y - 14f);
             }
             DialogBoxText.pixelOffset = new Vector2(DialogBoxText.pixelOffset.x, DialogBoxText.pixelOffset.y + 1f);
             DialogBoxTextShadow.pixelOffset = new Vector2(DialogBoxTextShadow.pixelOffset.x,
@@ -397,10 +362,10 @@ public class DialogBoxHandler : MonoBehaviour
     }
 
 
-    public IEnumerator choiceNavigate()
+    public IEnumerator choiceNavigate(int defaultChosenIndex = 1)
     {
         //No parametres means simply Yes/No
-        chosenIndex = 1; //0 is the vertically lowest choice
+        chosenIndex = defaultChosenIndex; //0 is the vertically lowest choice
         bool selected = false;
         while (!selected)
         {
@@ -414,7 +379,7 @@ public class DialogBoxHandler : MonoBehaviour
                 {
                     chosenIndex -= 1;
                     ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                        ChoiceBoxSelect.pixelInset.y - 45f, ChoiceBoxSelect.pixelInset.width,
+                        ChoiceBoxSelect.pixelInset.y - 14f, ChoiceBoxSelect.pixelInset.width,
                         ChoiceBoxSelect.pixelInset.height);
                 }
                 SfxHandler.Play(selectClip);
@@ -429,7 +394,7 @@ public class DialogBoxHandler : MonoBehaviour
                     {
                         chosenIndex += 1;
                         ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                            ChoiceBoxSelect.pixelInset.y + 45f, ChoiceBoxSelect.pixelInset.width,
+                            ChoiceBoxSelect.pixelInset.y + 14f, ChoiceBoxSelect.pixelInset.width,
                             ChoiceBoxSelect.pixelInset.height);
                         SfxHandler.Play(selectClip);
                         yield return new WaitForSeconds(0.2f);
@@ -441,7 +406,7 @@ public class DialogBoxHandler : MonoBehaviour
                     {
                         chosenIndex -= 1;
                         ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                            ChoiceBoxSelect.pixelInset.y - 45f, ChoiceBoxSelect.pixelInset.width,
+                            ChoiceBoxSelect.pixelInset.y - 14f, ChoiceBoxSelect.pixelInset.width,
                             ChoiceBoxSelect.pixelInset.height);
                         SfxHandler.Play(selectClip);
                         yield return new WaitForSeconds(0.2f);
@@ -452,61 +417,7 @@ public class DialogBoxHandler : MonoBehaviour
         }
     }
 
-    public IEnumerator choiceNavigateNo()
-    {
-        //For when No needs to be default;
-        chosenIndex = 0;
-        bool selected = false;
-        while (!selected)
-        {
-            if (Input.GetButtonDown("Select"))
-            {
-                selected = true;
-            }
-            else if (Input.GetButtonDown("Back"))
-            {
-                while (chosenIndex > 0)
-                {
-                    chosenIndex -= 1;
-                    ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                        ChoiceBoxSelect.pixelInset.y - 45f, ChoiceBoxSelect.pixelInset.width,
-                        ChoiceBoxSelect.pixelInset.height);
-                }
-                SfxHandler.Play(selectClip);
-                yield return new WaitForSeconds(0.2f);
-                selected = true;
-            }
-            else
-            {
-                if (chosenIndex < 1)
-                {
-                    if (Input.GetAxisRaw("Vertical") > 0)
-                    {
-                        chosenIndex += 1;
-                        ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                            ChoiceBoxSelect.pixelInset.y + 45f, ChoiceBoxSelect.pixelInset.width,
-                            ChoiceBoxSelect.pixelInset.height);
-                        SfxHandler.Play(selectClip);
-                        yield return new WaitForSeconds(0.2f);
-                    }
-                }
-                if (chosenIndex > 0)
-                {
-                    if (Input.GetAxisRaw("Vertical") < 0)
-                    {
-                        chosenIndex -= 1;
-                        ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                            ChoiceBoxSelect.pixelInset.y - 45f, ChoiceBoxSelect.pixelInset.width,
-                            ChoiceBoxSelect.pixelInset.height);
-                        SfxHandler.Play(selectClip);
-                        yield return new WaitForSeconds(0.2f);
-                    }
-                }
-            }
-            yield return null;
-        }
-    }
-
+   
     public IEnumerator choiceNavigate(string[] choices)
     {
         chosenIndex = choices.Length - 1; //0 is the vertically lowest choice
@@ -523,7 +434,7 @@ public class DialogBoxHandler : MonoBehaviour
                 {
                     chosenIndex -= 1;
                     ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                        ChoiceBoxSelect.pixelInset.y - 45f, ChoiceBoxSelect.pixelInset.width,
+                        ChoiceBoxSelect.pixelInset.y - 14f, ChoiceBoxSelect.pixelInset.width,
                         ChoiceBoxSelect.pixelInset.height);
                 }
                 SfxHandler.Play(selectClip);
@@ -538,7 +449,7 @@ public class DialogBoxHandler : MonoBehaviour
                     {
                         chosenIndex += 1;
                         ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                            ChoiceBoxSelect.pixelInset.y + 45f, ChoiceBoxSelect.pixelInset.width,
+                            ChoiceBoxSelect.pixelInset.y + 14f, ChoiceBoxSelect.pixelInset.width,
                             ChoiceBoxSelect.pixelInset.height);
                         SfxHandler.Play(selectClip);
                         yield return new WaitForSeconds(0.2f);
@@ -550,7 +461,7 @@ public class DialogBoxHandler : MonoBehaviour
                     {
                         chosenIndex -= 1;
                         ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                            ChoiceBoxSelect.pixelInset.y - 45f, ChoiceBoxSelect.pixelInset.width,
+                            ChoiceBoxSelect.pixelInset.y - 14f, ChoiceBoxSelect.pixelInset.width,
                             ChoiceBoxSelect.pixelInset.height);
                         SfxHandler.Play(selectClip);
                         yield return new WaitForSeconds(0.2f);
@@ -578,7 +489,7 @@ public class DialogBoxHandler : MonoBehaviour
                 {
                     chosenIndex -= 1;
                     ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                        ChoiceBoxSelect.pixelInset.y - 45f, ChoiceBoxSelect.pixelInset.width,
+                        ChoiceBoxSelect.pixelInset.y - 14f, ChoiceBoxSelect.pixelInset.width,
                         ChoiceBoxSelect.pixelInset.height);
                 }
                 drawDialogBox();
@@ -595,7 +506,7 @@ public class DialogBoxHandler : MonoBehaviour
                     {
                         chosenIndex += 1;
                         ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                            ChoiceBoxSelect.pixelInset.y + 45f, ChoiceBoxSelect.pixelInset.width,
+                            ChoiceBoxSelect.pixelInset.y + 14f, ChoiceBoxSelect.pixelInset.width,
                             ChoiceBoxSelect.pixelInset.height);
                         SfxHandler.Play(selectClip);
                         drawDialogBox();
@@ -609,7 +520,7 @@ public class DialogBoxHandler : MonoBehaviour
                     {
                         chosenIndex -= 1;
                         ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                            ChoiceBoxSelect.pixelInset.y - 45f, ChoiceBoxSelect.pixelInset.width,
+                            ChoiceBoxSelect.pixelInset.y - 14f, ChoiceBoxSelect.pixelInset.width,
                             ChoiceBoxSelect.pixelInset.height);
                         SfxHandler.Play(selectClip);
                         drawDialogBox();
