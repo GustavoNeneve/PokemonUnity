@@ -80,8 +80,6 @@ public class FollowerMovement : MonoBehaviour
             followerLight.intensity = 0;
         }
 
-        transform.position = Player.transform.position;
-        direction = Player.direction;
         if (direction == 0)
         {
             transform.Translate(Vector3.back);
@@ -98,7 +96,7 @@ public class FollowerMovement : MonoBehaviour
         {
             transform.Translate(Vector3.right);
         }
-
+        transform.position = startPosition;
         changeFollower(followerIndex);
         StartCoroutine("animateSprite");
     }
@@ -292,9 +290,9 @@ public class FollowerMovement : MonoBehaviour
 
                 Dialog.drawDialogBox();
                 yield return
-                    Dialog.StartCoroutine("drawText",
+                    Dialog.StartCoroutine(Dialog.drawText(
                         SaveData.currentSave.PC.boxes[0][followerIndex].getName() +
-                        " is enjoying walking around \\out of their ball.");
+                        " is enjoying walking around \\out of their ball."));
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                 {
                     yield return null;
