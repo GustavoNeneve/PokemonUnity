@@ -187,7 +187,7 @@ public class TrainerHandler : MonoBehaviour
         if (!shutting)
         {
             yield return new WaitForSeconds(waitTime);
-            badgeBoxLid.pixelInset = new Rect(30, 100, 1260, 825);
+            badgeBoxLid.pixelInset = new Rect(6, 20, 252, 165);
             float increment = 0;
             float startY = badgeBoxLid.pixelInset.y;
             while (increment < 1)
@@ -197,11 +197,11 @@ public class TrainerHandler : MonoBehaviour
                 {
                     increment = 1;
                 }
-                badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, startY + (810f * increment), 1260,
-                    165f - (800f * increment));
+                badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, startY + (162f * increment), 252,
+                    165f - (160f * increment));
                 yield return null;
             }
-            badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, badgeBoxLid.pixelInset.y + 25, 1260, -25);
+            badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, badgeBoxLid.pixelInset.y + 5, 252, -5);
             increment = 0;
             startY = badgeBoxLid.pixelInset.y;
             while (increment < 1)
@@ -211,14 +211,14 @@ public class TrainerHandler : MonoBehaviour
                 {
                     increment = 1;
                 }
-                badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, startY + (560f * increment), 1260,
-                    -5f - (560f * increment));
+                badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, startY + (112f * increment), 252,
+                    -5f - (112f * increment));
                 yield return null;
             }
         }
         else
         {
-            badgeBoxLid.pixelInset = new Rect(30, 1495, 1260, 585);
+            badgeBoxLid.pixelInset = new Rect(6, 299, 252, -177);
             float increment = 0;
             float startY = badgeBoxLid.pixelInset.y;
             while (increment < 1)
@@ -228,11 +228,11 @@ public class TrainerHandler : MonoBehaviour
                 {
                     increment = 1;
                 }
-                badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, startY - (560f * increment), 1260,
-                    -585f + (560f * increment));
+                badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, startY - (112f * increment), 252,
+                    -117f + (112f * increment));
                 yield return null;
             }
-            badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, badgeBoxLid.pixelInset.y - 25, 1260, +25);
+            badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, badgeBoxLid.pixelInset.y - 5, 252, +5);
             increment = 0;
             startY = badgeBoxLid.pixelInset.y;
             while (increment < 1)
@@ -242,8 +242,8 @@ public class TrainerHandler : MonoBehaviour
                 {
                     increment = 1;
                 }
-                badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, startY - (810f * increment), 1260,
-                    5f + (800f * increment));
+                badgeBoxLid.pixelInset = new Rect(badgeBoxLid.pixelInset.x, startY - (162f * increment), 252,
+                    5f + (160f * increment));
                 yield return null;
             }
         }
@@ -267,7 +267,7 @@ public class TrainerHandler : MonoBehaviour
                 if (currentScreen == 1)
                 {
                     destinationPosition = new Vector3(-0.806f, 0, 0);
-                    StartCoroutine("boxLid", false);
+                    StartCoroutine(boxLid(false));
                 }
                 else if (currentScreen == 0)
                 {
@@ -288,7 +288,7 @@ public class TrainerHandler : MonoBehaviour
                     destinationPosition = new Vector3(0, 0, 0);
                     currentBadge = 0;
                     badgeSel.pixelInset = badges[0].pixelInset;
-                    StartCoroutine("boxLid", true);
+                    StartCoroutine(boxLid(true));
                 }
             }
         }
@@ -521,7 +521,7 @@ public class TrainerHandler : MonoBehaviour
                 {
                     increment = 1;
                 }
-                background.pixelInset = new Rect(Mathf.RoundToInt(-160f * increment), Mathf.RoundToInt(160f * increment),
+                background.pixelInset = new Rect(Mathf.RoundToInt(-32f * increment), Mathf.RoundToInt(32f * increment),
                     background.pixelInset.width, background.pixelInset.height);
                 yield return null;
             }
@@ -532,13 +532,13 @@ public class TrainerHandler : MonoBehaviour
     public IEnumerator control()
     {
         screens.position = new Vector3(0, 0, 0);
-        badgeBoxLid.pixelInset = new Rect(30, 100, 1260, 825);
+        badgeBoxLid.pixelInset = new Rect(6, 20, 252, 165);
         //sceneTransition.FadeIn();
         StartCoroutine(ScreenFade.main.Fade(true, ScreenFade.defaultSpeed));
 
         running = true;
-        StartCoroutine("animBG");
-        StartCoroutine("animColon");
+        StartCoroutine(animBG());
+        StartCoroutine(animColon());
 
         cancelSelected = false;
         cancel.texture = cancelTex;
@@ -707,7 +707,7 @@ public class TrainerHandler : MonoBehaviour
         }
         if (currentScreen != 1)
         {
-            StartCoroutine("boxLid", true);
+            StartCoroutine(boxLid(true));
         }
         //yield return new WaitForSeconds(sceneTransition.FadeOut());
         yield return StartCoroutine(ScreenFade.main.Fade(false, ScreenFade.defaultSpeed));
