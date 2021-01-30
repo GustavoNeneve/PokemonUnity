@@ -196,7 +196,7 @@ public class SettingsHandler : MonoBehaviour
             {
                 increment = 1;
             }
-            selectRow.pixelInset = new Rect(selectRow.pixelInset.x, startY + (80 * increment * direction),
+            selectRow.pixelInset = new Rect(selectRow.pixelInset.x, startY + (16 * increment * direction),
                 selectRow.pixelInset.width, selectRow.pixelInset.height);
             yield return null;
         }
@@ -240,19 +240,19 @@ public class SettingsHandler : MonoBehaviour
             if (selectedOptionIndex[selectedOption] == 0)
             {
                 textSpeedHighlight.text = "Slow";
-                textSpeedHighlight.pixelOffset = new Vector2(155*5, 159*5);
+                textSpeedHighlight.pixelOffset = new Vector2(155, 159);
                 PlayerPrefs.SetInt("textSpeed", 0);
             }
             else if (selectedOptionIndex[selectedOption] == 1)
             {
                 textSpeedHighlight.text = "Medium";
-                textSpeedHighlight.pixelOffset = new Vector2(191*5, 159*5);
+                textSpeedHighlight.pixelOffset = new Vector2(191, 159);
                 PlayerPrefs.SetInt("textSpeed", 1);
             }
             else
             {
                 textSpeedHighlight.text = "Fast";
-                textSpeedHighlight.pixelOffset = new Vector2(238*5, 159*5);
+                textSpeedHighlight.pixelOffset = new Vector2(238, 159);
                 PlayerPrefs.SetInt("textSpeed", 2);
             }
         }
@@ -290,12 +290,12 @@ public class SettingsHandler : MonoBehaviour
             if (selectedOptionIndex[selectedOption] == 0)
             {
                 battleSceneHighlight.text = "Off";
-                battleSceneHighlight.pixelOffset = new Vector2(186*5, 95*5);
+                battleSceneHighlight.pixelOffset = new Vector2(186, 95);
             }
             else
             {
                 battleSceneHighlight.text = "On";
-                battleSceneHighlight.pixelOffset = new Vector2(217*5, 95*5);
+                battleSceneHighlight.pixelOffset = new Vector2(217, 95);
             }
         }
         else if (selectedOption == 5)
@@ -303,12 +303,12 @@ public class SettingsHandler : MonoBehaviour
             if (selectedOptionIndex[selectedOption] == 0)
             {
                 battleStyleHighlight.text = "Switch";
-                battleStyleHighlight.pixelOffset = new Vector2(171*5, 79*5);
+                battleStyleHighlight.pixelOffset = new Vector2(171, 79);
             }
             else
             {
                 battleStyleHighlight.text = "Set";
-                battleStyleHighlight.pixelOffset = new Vector2(217*5, 79*5);
+                battleStyleHighlight.pixelOffset = new Vector2(217, 79);
             }
         }
         else if (selectedOption == 6)
@@ -316,7 +316,7 @@ public class SettingsHandler : MonoBehaviour
             if (selectedOptionIndex[selectedOption] == 0)
             {
                 screenSizeHighlight.text = "x1";
-                screenSizeHighlight.pixelOffset = new Vector2(150*5, 63*5);
+                screenSizeHighlight.pixelOffset = new Vector2(150, 63);
                 if (!Screen.fullScreen)
                 {
                     Screen.SetResolution(342, 192, Screen.fullScreen);
@@ -325,7 +325,7 @@ public class SettingsHandler : MonoBehaviour
             else if (selectedOptionIndex[selectedOption] == 1)
             {
                 screenSizeHighlight.text = "x2";
-                screenSizeHighlight.pixelOffset = new Vector2(177*5, 63*5);
+                screenSizeHighlight.pixelOffset = new Vector2(177, 63);
                 if (!Screen.fullScreen)
                 {
                     Screen.SetResolution(684, 384, Screen.fullScreen);
@@ -334,7 +334,7 @@ public class SettingsHandler : MonoBehaviour
             else if (selectedOptionIndex[selectedOption] == 2)
             {
                 screenSizeHighlight.text = "x3";
-                screenSizeHighlight.pixelOffset = new Vector2(204*5, 63*5);
+                screenSizeHighlight.pixelOffset = new Vector2(204, 63);
                 if (!Screen.fullScreen)
                 {
                     Screen.SetResolution(1026, 576, Screen.fullScreen);
@@ -343,7 +343,7 @@ public class SettingsHandler : MonoBehaviour
             else if (selectedOptionIndex[selectedOption] == 3)
             {
                 screenSizeHighlight.text = "x4";
-                screenSizeHighlight.pixelOffset = new Vector2(231*5, 63*5);
+                screenSizeHighlight.pixelOffset = new Vector2(231, 63);
                 if (!Screen.fullScreen)
                 {
                     Screen.SetResolution(1368, 768, Screen.fullScreen);
@@ -352,7 +352,7 @@ public class SettingsHandler : MonoBehaviour
             else
             {
                 screenSizeHighlight.text = "x5";
-                screenSizeHighlight.pixelOffset = new Vector2(258*5, 63*5);
+                screenSizeHighlight.pixelOffset = new Vector2(258, 63);
                 if (!Screen.fullScreen)
                 {
                     Screen.SetResolution(1710, 960, Screen.fullScreen);
@@ -364,19 +364,19 @@ public class SettingsHandler : MonoBehaviour
             if (selectedOptionIndex[selectedOption] == 0)
             {
                 fullscreenHighlight.text = "Off";
-                fullscreenHighlight.pixelOffset = new Vector2(149*5, 47*5);
+                fullscreenHighlight.pixelOffset = new Vector2(149, 47);
                 Screen.SetResolution(342 * (selectedOptionIndex[6] + 1), 192 * (selectedOptionIndex[6] + 1), false);
             }
             else if (selectedOptionIndex[selectedOption] == 1)
             {
                 fullscreenHighlight.text = "Border";
-                fullscreenHighlight.pixelOffset = new Vector2(180*5, 47*5);
+                fullscreenHighlight.pixelOffset = new Vector2(180, 47);
                 Screen.SetResolution(342 * (selectedOptionIndex[6] + 1), 192 * (selectedOptionIndex[6] + 1), true);
             }
             else if (selectedOptionIndex[selectedOption] == 2)
             {
                 fullscreenHighlight.text = "Stretch";
-                fullscreenHighlight.pixelOffset = new Vector2(231*5, 47*5);
+                fullscreenHighlight.pixelOffset = new Vector2(231, 47);
                 Screen.SetResolution(342 * selectedOptionSize[6], 192 * selectedOptionSize[6], true);
             }
         }
@@ -454,7 +454,7 @@ public class SettingsHandler : MonoBehaviour
         //	float originalMVol = PlayerPrefs.GetFloat("musicVolume");
 //		float originalSVol = PlayerPrefs.GetFloat("sfxVolume");
         selectedOption = 0;
-        selectRow.pixelInset = new Rect(270, 144*5, selectRow.pixelInset.width, selectRow.pixelInset.height);
+        selectRow.pixelInset = new Rect(51, 144, selectRow.pixelInset.width, selectRow.pixelInset.height);
         drawDialogBox();
         drawTextInstant(selectedOptionText[0]);
         while (running)
@@ -591,10 +591,10 @@ public class SettingsHandler : MonoBehaviour
             {
                 Dialog.drawDialogBox();
                 yield return
-                    Dialog.StartCoroutine("drawText", "Would you like to save the currently \\selected settings?");
+                    Dialog.StartCoroutine(Dialog.drawText( "Would you like to save the currently \\selected settings?"));
                 Dialog.drawChoiceBoxNo();
                 yield return new WaitForSeconds(0.2f);
-                yield return StartCoroutine(Dialog.choiceNavigateNo());
+                yield return StartCoroutine(Dialog.choiceNavigate(0));
                 int chosenIndex = Dialog.chosenIndex;
                 if (chosenIndex == 1)
                 {
