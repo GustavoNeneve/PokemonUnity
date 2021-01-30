@@ -37,12 +37,12 @@ public class SceneTransition : MonoBehaviour
         }
         if (!RotatableGUI)
         {
-            screenFader.pixelInset = new Rect(0, 0, 342*5, 192*5);
+            screenFader.pixelInset = new Rect(0, 0, 342, 192);
         }
         else
         {
             screenFaderOnGUI = transform.Find("ScreenFader").GetComponent<RotatableGUIItem>();
-            screenFaderOnGUI.size = new Vector2(342*5, 192*5);
+            screenFaderOnGUI.size = new Vector2(342, 192);
         }
     }
 
@@ -157,13 +157,11 @@ public class SceneTransition : MonoBehaviour
         fading = false;
     }
 
-    public float FadeIn()
+    public float FadeIn(float speed = -1)
     {
-        return FadeIn(fadeSpeed);
-    }
+        if (speed < 0)
+            speed = fadeSpeed;
 
-    public float FadeIn(float speed)
-    {
         if (!RotatableGUI)
         {
             screenFader.enabled = true;
@@ -182,28 +180,11 @@ public class SceneTransition : MonoBehaviour
         return speed;
     }
 
-    public float FadeOut()
+    public float FadeOut(float speed = -1)
     {
-        if (!RotatableGUI)
-        {
-            screenFader.enabled = true;
-            screenFader.texture = GlobalVariables.global.fadeTex;
-        }
-        else
-        {
-            screenFaderOnGUI.enabled = true;
-            screenFaderOnGUI.texture = (Texture2D) GlobalVariables.global.fadeTex;
-        }
-        increment = 0;
-        fadingOut = true;
-        fading = true;
-        StartCoroutine("fade", fadeSpeed);
-        GlobalVariables.global.fadeIn = true;
-        return fadeSpeed;
-    }
+        if (speed < 0)
+            speed = fadeSpeed;
 
-    public float FadeOut(float speed)
-    {
         if (!RotatableGUI)
         {
             screenFader.enabled = true;
