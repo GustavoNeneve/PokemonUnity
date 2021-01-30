@@ -114,14 +114,14 @@ public class EvolutionHandler : MonoBehaviour
         evolutionSprite.sprite = evolutionSpriteAnimation[0];
         StartCoroutine(animatePokemon());
 
-        pokemonSprite.rectTransform.sizeDelta = new Vector2(128*5, 128*5);
+        pokemonSprite.rectTransform.sizeDelta = new Vector2(128, 128);
         evolutionSprite.rectTransform.sizeDelta = new Vector2(0, 0);
 
         pokemonSprite.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
         evolutionSprite.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
 
-        topBorder.rectTransform.sizeDelta = new Vector2(1710, 0);
-        bottomBorder.rectTransform.sizeDelta = new Vector2(1710, 0);
+        topBorder.rectTransform.sizeDelta = new Vector2(342, 0);
+        bottomBorder.rectTransform.sizeDelta = new Vector2(342, 0);
 
         glow.rectTransform.sizeDelta = new Vector2(0, 0);
 
@@ -271,10 +271,10 @@ public class EvolutionHandler : MonoBehaviour
         }
         particles.cancelAllParticles();
         glow.rectTransform.sizeDelta = new Vector2(0, 0);
-        bottomBorder.rectTransform.sizeDelta = new Vector2(1710, 0);
-        topBorder.rectTransform.sizeDelta = new Vector2(1710, 0);
+        bottomBorder.rectTransform.sizeDelta = new Vector2(342, 0);
+        topBorder.rectTransform.sizeDelta = new Vector2(342, 0);
 
-        pokemonSprite.rectTransform.sizeDelta = new Vector2(128*5, 128*5);
+        pokemonSprite.rectTransform.sizeDelta = new Vector2(128, 128);
         evolutionSprite.rectTransform.sizeDelta = new Vector2(0, 0);
         pokemonSprite.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
 
@@ -330,7 +330,7 @@ public class EvolutionHandler : MonoBehaviour
     {
         float increment = 0f;
         float speed = 0.8f;
-        float endSize = 480f;
+        float endSize = 96f;
 
         glow.color = new Color(0.8f, 0.8f, 0.5f, 0.2f);
         while (increment < 1)
@@ -370,7 +370,7 @@ public class EvolutionHandler : MonoBehaviour
         float increment = 0f;
         float speed = 0.9f;
         float maxSize = 160f;
-        float minSize = 480f;
+        float minSize = 96f;
         float sizeDifference = maxSize - minSize;
         bool glowShrunk = true;
 
@@ -433,20 +433,20 @@ public class EvolutionHandler : MonoBehaviour
                 }
                 if (originalPokemonShrunk)
                 {
-                    pokemonSprite.rectTransform.sizeDelta = new Vector2(640f * increment, 640f * increment);
+                    pokemonSprite.rectTransform.sizeDelta = new Vector2(128f * increment, 128f * increment);
                     pokemonSprite.transform.localPosition = new Vector3(originalPosition.x,
                         centerPosition.y - (distance * increment), originalPosition.z);
-                    evolutionSprite.rectTransform.sizeDelta = new Vector2(640f  - 640f * increment,
-                        640f  - 640f * increment);
+                    evolutionSprite.rectTransform.sizeDelta = new Vector2(128f - 128f * increment,
+                        128f - 128f * increment);
                     evolutionSprite.transform.localPosition = new Vector3(originalPosition.x,
                         originalPosition.y + (distance * increment), originalPosition.z);
                 }
                 else
                 {
-                    pokemonSprite.rectTransform.sizeDelta = new Vector2(640f  - 640f * increment, 640f  - 640f * increment);
+                    pokemonSprite.rectTransform.sizeDelta = new Vector2(128f - 128f * increment, 128f - 128f * increment);
                     pokemonSprite.transform.localPosition = new Vector3(originalPosition.x,
                         originalPosition.y + (distance * increment), originalPosition.z);
-                    evolutionSprite.rectTransform.sizeDelta = new Vector2(640f * increment, 640f * increment);
+                    evolutionSprite.rectTransform.sizeDelta = new Vector2(128f * increment, 128f * increment);
                     evolutionSprite.transform.localPosition = new Vector3(originalPosition.x,
                         centerPosition.y - (distance * increment), originalPosition.z);
                 }
@@ -510,8 +510,8 @@ public class EvolutionHandler : MonoBehaviour
             {
                 increment = 1;
             }
-            topBorder.rectTransform.sizeDelta = new Vector2(1710, 40 * increment);
-            bottomBorder.rectTransform.sizeDelta = new Vector2(1710, 64 * increment);
+            topBorder.rectTransform.sizeDelta = new Vector2(342, 40 * increment);
+            bottomBorder.rectTransform.sizeDelta = new Vector2(342, 64 * increment);
             yield return null;
         }
     }
@@ -527,8 +527,8 @@ public class EvolutionHandler : MonoBehaviour
             {
                 increment = 1;
             }
-            topBorder.rectTransform.sizeDelta = new Vector2(1710, 40 - 40 * increment);
-            bottomBorder.rectTransform.sizeDelta = new Vector2(1710, 64 - 64 * increment);
+            topBorder.rectTransform.sizeDelta = new Vector2(342, 40 - 40 * increment);
+            bottomBorder.rectTransform.sizeDelta = new Vector2(342, 64 - 64 * increment);
             yield return null;
         }
     }
@@ -572,9 +572,9 @@ public class EvolutionHandler : MonoBehaviour
             if (!stopAnimations)
             {
                 Image particle = particles.createParticle(smokeParticle, ScaleToScreen(positionX, positionYmodified),
-                    sizeModified, 0, 0.6f,
-                    ScaleToScreen(positionX + Random.Range(0.01f, 0.04f), positionYmodified - 0.02f), 0,
-                    sizeModified * 0.33f);
+                    ScaleToScreen(positionX + Random.Range(0.01f, 0.04f), positionYmodified - 0.02f),
+                    sizeModified, 0, 0.6f, 0, sizeModified * 0.33f);
+
                 if (particle != null)
                 {
                     particle.color = new Color((float) i / 7f * 0.7f, (float) i / 7f * 0.7f, (float) i / 7f * 0.7f,
@@ -600,7 +600,7 @@ public class EvolutionHandler : MonoBehaviour
 
     private Vector2 ScaleToScreen(float x, float y)
     {
-        Vector2 vector = new Vector2(x * 1710f - 885f, (1 - y) * 960f - 480f);
+        Vector2 vector = new Vector2(x * 342f - 171f, (1 - y) * 192f - 96f);
         return vector;
     }
 
@@ -652,7 +652,7 @@ public class EvolutionHandler : MonoBehaviour
 
                         //Set SceneSummary to be active so that it appears
                         Scene.main.Summary.gameObject.SetActive(true);
-                        StartCoroutine(Scene.main.Summary.control(selectedPokemon, move));
+                        StartCoroutine(Scene.main.Summary.control(new Pokemon[] { selectedPokemon }, learning:learning, newMoveString:move));
                         //Start an empty loop that will only stop when SceneSummary is no longer active (is closed)
                         while (Scene.main.Summary.gameObject.activeSelf)
                         {
