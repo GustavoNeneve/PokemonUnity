@@ -21,9 +21,9 @@ public class Title : MonoBehaviour {
 
 	void FixedUpdate() {
 		//float newPos = Mathf.Repeat(Time.time * speed, StartPosition);
-		float newPos = Mathf.Repeat(Time.time * speed, pixeljump);
+		//float newPos = Mathf.Repeat(Time.time * speed, pixeljump);
 		
-		transform.position = StartPosition + Vector3.left * newPos;
+		//transform.position = StartPosition + Vector3.left * newPos;
 
 		
 

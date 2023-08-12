@@ -12,7 +12,10 @@ public class DialogBoxHandler : MonoBehaviour
         Typewriter,
         Instant
     }
-
+    //header
+    [Header("Scale Multiplier")]
+    public float hdScaleMultiplier = 5;
+    [Header("Dialog Box")]
     public string DialogBoxString;
     private string[] DialogBoxStringArray;
 
@@ -33,6 +36,8 @@ public class DialogBoxHandler : MonoBehaviour
 
     private float charPerSec = 60f;
     public float scrollSpeed = 0.1f;
+
+    
 
     public int chosenIndex;
 
@@ -78,6 +83,33 @@ public class DialogBoxHandler : MonoBehaviour
 
     void Start()
     {
+        int lines = -1;
+        int customYOffset = 0;
+        DialogBoxBorder.texture = Resources.Load<Texture>("Frame/dialog" + PlayerPrefs.GetInt("frameStyle"));
+        DialogBoxTexture.texture = Resources.Load<Texture>("Frame/dialogBG");
+
+        DialogBoxTexture.pixelInset = new Rect(DialogBoxTexture.pixelInset.x * hdScaleMultiplier, DialogBoxTexture.pixelInset.y * hdScaleMultiplier,
+            DialogBoxTexture.pixelInset.width * hdScaleMultiplier, Mathf.Round((float) lines * 14f) + 16f);
+        DialogBoxBorder.pixelInset = new Rect(DialogBoxBorder.pixelInset.x * hdScaleMultiplier, DialogBoxBorder.pixelInset.y * hdScaleMultiplier,
+            DialogBoxBorder.pixelInset.width * hdScaleMultiplier, Mathf.Round((float) lines * 14f) + 16f);
+        //DialogBoxText.pixelOffset = new Vector2(DialogBoxText.pixelOffset.x * hdScaleMultiplier, 7f + Mathf.Round((float) lines * 14f));
+        //DialogBoxTextShadow.pixelOffset = new Vector2(DialogBoxTextShadow.pixelOffset.x * hdScaleMultiplier,
+         //   6f + Mathf.Round((float) lines * 14f));
+
+            ChoiceBoxTexture.texture = Resources.Load<Texture>("Frame/choice" + PlayerPrefs.GetInt("frameStyle"));
+        ChoiceBoxTexture.pixelInset = new Rect((342 * hdScaleMultiplier) - defaultChoiceWidth -(1 * hdScaleMultiplier), defaultChoiceY + customYOffset,
+            defaultChoiceWidth * hdScaleMultiplier, (44 * hdScaleMultiplier));
+        ChoiceBoxSelect.pixelInset = new Rect((342 * hdScaleMultiplier) - defaultChoiceWidth + (7 * hdScaleMultiplier), ChoiceBoxTexture.pixelInset.y + (23 * hdScaleMultiplier),
+            ChoiceBoxSelect.pixelInset.width, ChoiceBoxSelect.pixelInset.height);
+        ChoiceBoxText.pixelOffset = new Vector2((342 * hdScaleMultiplier) - defaultChoiceWidth + (21 * hdScaleMultiplier), ChoiceBoxTexture.pixelInset.y + (13 * hdScaleMultiplier));
+        ChoiceBoxTextShadow.pixelOffset = new Vector2((342 * hdScaleMultiplier) - defaultChoiceWidth + (22 * hdScaleMultiplier), ChoiceBoxTexture.pixelInset.y + (12 * hdScaleMultiplier));
+        
+        ChoiceBoxTexture.pixelInset = new Rect((342 * hdScaleMultiplier) - defaultChoiceWidth -(1 * hdScaleMultiplier), defaultChoiceY, defaultChoiceWidth * hdScaleMultiplier, (44 * hdScaleMultiplier));
+        ChoiceBoxSelect.pixelInset = new Rect((342 * hdScaleMultiplier) - defaultChoiceWidth + (7 * hdScaleMultiplier), ChoiceBoxTexture.pixelInset.y + (9 * hdScaleMultiplier),
+            ChoiceBoxSelect.pixelInset.width, ChoiceBoxSelect.pixelInset.height);
+        ChoiceBoxText.pixelOffset = new Vector2((342 * hdScaleMultiplier) - defaultChoiceWidth + (21 * hdScaleMultiplier), ChoiceBoxTexture.pixelInset.y + (13 * hdScaleMultiplier));
+        ChoiceBoxTextShadow.pixelOffset = new Vector2((342 * hdScaleMultiplier) - defaultChoiceWidth + (22 * hdScaleMultiplier), ChoiceBoxTexture.pixelInset.y + (12 * hdScaleMultiplier));
+        
         DialogBox.SetActive(!hideDialogOnStart);
         ChoiceBox.SetActive(!hideChoiceOnStart);
     }
@@ -101,9 +133,14 @@ public class DialogBoxHandler : MonoBehaviour
             DialogBoxTexture.pixelInset.width, Mathf.Round((float) lines * 14f) + 16f);
         DialogBoxBorder.pixelInset = new Rect(DialogBoxBorder.pixelInset.x, DialogBoxBorder.pixelInset.y,
             DialogBoxBorder.pixelInset.width, Mathf.Round((float) lines * 14f) + 16f);
-        DialogBoxText.pixelOffset = new Vector2(DialogBoxText.pixelOffset.x, 7f + Mathf.Round((float) lines * 14f));
+        DialogBoxText.pixelOffset = new Vector2(DialogBoxText.pixelOffset.x, 7f + (Mathf.Round((float) lines * 14f)-40));
         DialogBoxTextShadow.pixelOffset = new Vector2(DialogBoxTextShadow.pixelOffset.x,
-            6f + Mathf.Round((float) lines * 14f));
+            6f + (Mathf.Round((float) lines * 14f)-40));
+            
+        Debug.Log("DialogBoxTexture.pixelInset.height: " + DialogBoxTexture.pixelInset.height);
+        Debug.Log("DialogBoxTexture.pixelInset.width: " + DialogBoxTexture.pixelInset.width);
+        //debug Mathf.Round((float) lines * 14f) + 16f
+        
     }
 
     public IEnumerator drawSignBox()
@@ -142,12 +179,12 @@ public class DialogBoxHandler : MonoBehaviour
         //No other parametres means simply Yes/No
         ChoiceBox.SetActive(true);
         ChoiceBoxTexture.texture = Resources.Load<Texture>("Frame/choice" + PlayerPrefs.GetInt("frameStyle"));
-        ChoiceBoxTexture.pixelInset = new Rect(342 - defaultChoiceWidth - 1, defaultChoiceY + customYOffset,
-            defaultChoiceWidth, 44f);
-        ChoiceBoxSelect.pixelInset = new Rect(342 - defaultChoiceWidth + 7, ChoiceBoxTexture.pixelInset.y + 23f,
+        ChoiceBoxTexture.pixelInset = new Rect((342) - defaultChoiceWidth -(1), defaultChoiceY + customYOffset,
+            defaultChoiceWidth, (44));
+        ChoiceBoxSelect.pixelInset = new Rect((342) - defaultChoiceWidth + (7), ChoiceBoxTexture.pixelInset.y + (23),
             ChoiceBoxSelect.pixelInset.width, ChoiceBoxSelect.pixelInset.height);
-        ChoiceBoxText.pixelOffset = new Vector2(342 - defaultChoiceWidth + 21, ChoiceBoxTexture.pixelInset.y + 13f);
-        ChoiceBoxTextShadow.pixelOffset = new Vector2(342 - defaultChoiceWidth + 22, ChoiceBoxTexture.pixelInset.y + 12f);
+        ChoiceBoxText.pixelOffset = new Vector2((342) - defaultChoiceWidth + (21), ChoiceBoxTexture.pixelInset.y + (13));
+        ChoiceBoxTextShadow.pixelOffset = new Vector2((342) - defaultChoiceWidth + (22), ChoiceBoxTexture.pixelInset.y + (12));
         ChoiceBoxText.text = "Yes \nNo";
         ChoiceBoxTextShadow.text = "Yes \nNo";
     }
@@ -157,11 +194,11 @@ public class DialogBoxHandler : MonoBehaviour
         //set default position to 0
         ChoiceBox.SetActive(true);
         ChoiceBoxTexture.texture = Resources.Load<Texture>("Frame/choice" + PlayerPrefs.GetInt("frameStyle"));
-        ChoiceBoxTexture.pixelInset = new Rect(342 - defaultChoiceWidth - 1, defaultChoiceY, defaultChoiceWidth, 44f);
-        ChoiceBoxSelect.pixelInset = new Rect(342 - defaultChoiceWidth + 7, ChoiceBoxTexture.pixelInset.y + 9f,
+        ChoiceBoxTexture.pixelInset = new Rect((342) - defaultChoiceWidth -(1), defaultChoiceY, defaultChoiceWidth, (44));
+        ChoiceBoxSelect.pixelInset = new Rect((342) - defaultChoiceWidth + (7), ChoiceBoxTexture.pixelInset.y + (9),
             ChoiceBoxSelect.pixelInset.width, ChoiceBoxSelect.pixelInset.height);
-        ChoiceBoxText.pixelOffset = new Vector2(342 - defaultChoiceWidth + 21, ChoiceBoxTexture.pixelInset.y + 13f);
-        ChoiceBoxTextShadow.pixelOffset = new Vector2(342 - defaultChoiceWidth + 22, ChoiceBoxTexture.pixelInset.y + 12f);
+        ChoiceBoxText.pixelOffset = new Vector2((342) - defaultChoiceWidth + (21), ChoiceBoxTexture.pixelInset.y + (13));
+        ChoiceBoxTextShadow.pixelOffset = new Vector2((342) - defaultChoiceWidth + (22), ChoiceBoxTexture.pixelInset.y + (12));
         ChoiceBoxText.text = "Yes \nNo";
         ChoiceBoxTextShadow.text = "Yes \nNo";
     }
@@ -173,13 +210,13 @@ public class DialogBoxHandler : MonoBehaviour
 
         ChoiceBox.SetActive(true);
         ChoiceBoxTexture.texture = Resources.Load<Texture>("Frame/choice" + PlayerPrefs.GetInt("frameStyle"));
-        ChoiceBoxTexture.pixelInset = new Rect(342 - width - 1, defaultChoiceY, width,
+        ChoiceBoxTexture.pixelInset = new Rect((342) - width -(1), defaultChoiceY, width,
             30f + (14f * (choices.Length - 1)));
-        ChoiceBoxSelect.pixelInset = new Rect(342 - width + 7,
+        ChoiceBoxSelect.pixelInset = new Rect((342) - width + (7),
             ChoiceBoxTexture.pixelInset.y + 9f + (14f * (choices.Length - 1)), ChoiceBoxSelect.pixelInset.width,
             ChoiceBoxSelect.pixelInset.height);
-        ChoiceBoxText.pixelOffset = new Vector2(342 - width + 21, ChoiceBoxTexture.pixelInset.y + 13f);
-        ChoiceBoxTextShadow.pixelOffset = new Vector2(342 - width + 22, ChoiceBoxTexture.pixelInset.y + 12f);
+        ChoiceBoxText.pixelOffset = new Vector2((342) - width + (21), ChoiceBoxTexture.pixelInset.y + (13));
+        ChoiceBoxTextShadow.pixelOffset = new Vector2((342) - width + (22), ChoiceBoxTexture.pixelInset.y + (12));
         ChoiceBoxText.text = "";
         ChoiceBoxTextShadow.text = "";
         for (int i = 0; i < choices.Length; i++)

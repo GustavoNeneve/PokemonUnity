@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BagHandler : MonoBehaviour
 {
@@ -11,72 +12,72 @@ public class BagHandler : MonoBehaviour
 
     private Transform party;
 
-    private GUITexture[] partySlot = new GUITexture[6];
-    private GUITexture[] partyIcon = new GUITexture[6];
-    private GUIText[] partyName = new GUIText[6];
-    private GUIText[] partyNameShadow = new GUIText[6];
-    private GUIText[] partyGender = new GUIText[6];
-    private GUIText[] partyGenderShadow = new GUIText[6];
+    private Image[] partySlot = new Image[6];
+    private Image[] partyIcon = new Image[6];
+    private Text[] partyName = new Text[6];
+    private Text[] partyNameShadow = new Text[6];
+    private Text[] partyGender = new Text[6];
+    private Text[] partyGenderShadow = new Text[6];
     private GameObject[] partyStandardDisplay = new GameObject[6];
-    private GUITexture[] partyHPBarBack = new GUITexture[6];
-    private GUITexture[] partyHPBar = new GUITexture[6];
-    private GUITexture[] partyLv = new GUITexture[6];
-    private GUIText[] partyLevel = new GUIText[6];
-    private GUIText[] partyLevelShadow = new GUIText[6];
-    private GUIText[] partyTextDisplay = new GUIText[6];
-    private GUIText[] partyTextDisplayShadow = new GUIText[6];
-    private GUITexture[] partyStatus = new GUITexture[6];
-    private GUITexture[] partyItem = new GUITexture[6];
+    private Image[] partyHPBarBack = new Image[6];
+    private Image[] partyHPBar = new Image[6];
+    private Image[] partyLv = new Image[6];
+    private Text[] partyLevel = new Text[6];
+    private Text[] partyLevelShadow = new Text[6];
+    private Text[] partyTextDisplay = new Text[6];
+    private Text[] partyTextDisplayShadow = new Text[6];
+    private Image[] partyStatus = new Image[6];
+    private Image[] partyItem = new Image[6];
 
-    private GUITexture scrollBar;
+    private Image scrollBar;
 
     private Transform itemList;
 
-    private GUITexture[] itemSlot = new GUITexture[8];
-    private GUIText[] itemName = new GUIText[8];
-    private GUIText[] itemNameShadow = new GUIText[8];
-    private GUITexture[] itemIcon = new GUITexture[8];
-    private GUIText[] itemX = new GUIText[8];
-    private GUIText[] itemXShadow = new GUIText[8];
-    private GUIText[] itemQuantity = new GUIText[8];
-    private GUIText[] itemQuantityShadow = new GUIText[8];
+    private Image[] itemSlot = new Image[8];
+    private Text[] itemName = new Text[8];
+    private Text[] itemNameShadow = new Text[8];
+    private Image[] itemIcon = new Image[8];
+    private Text[] itemX = new Text[8];
+    private Text[] itemXShadow = new Text[8];
+    private Text[] itemQuantity = new Text[8];
+    private Text[] itemQuantityShadow = new Text[8];
 
-    private GUIText itemDescription;
-    private GUIText itemDescriptionShadow;
+    private Text itemDescription;
+    private Text itemDescriptionShadow;
 
     private GameObject[] screens = new GameObject[6];
     private GameObject[] shopScreens = new GameObject[6];
 
     private GameObject numbersBox;
-    private GUITexture numbersBoxBorder;
-    private GUIText numbersBoxText;
-    private GUIText numbersBoxTextShadow;
-    private GUIText numbersBoxSelector;
-    private GUIText numbersBoxSelectorShadow;
+    private Image numbersBoxBorder;
+    private Text numbersBoxText;
+    private Text numbersBoxTextShadow;
+    private Text numbersBoxSelector;
+    private Text numbersBoxSelectorShadow;
 
-    private GUIText shopName;
-    private GUIText shopNameShadow;
+    private Text shopName;
+    private Text shopNameShadow;
 
     private GameObject moneyBox;
-    private GUITexture moneyBoxBorder;
-    private GUIText moneyValueText;
-    private GUIText moneyValueTextShadow;
+    private Image moneyBoxBorder;
+    private Text moneyValueText;
+    private Text moneyValueTextShadow;
 
     private GameObject dataBox;
-    private GUITexture dataBoxBorder;
-    private GUIText dataText;
-    private GUIText dataTextShadow;
-    private GUIText dataValueText;
-    private GUIText dataValueTextShadow;
+    private Image dataBoxBorder;
+    private Text dataText;
+    private Text dataTextShadow;
+    private Text dataValueText;
+    private Text dataValueTextShadow;
 
-    private GUITexture tmType;
-    private GUITexture tmCategory;
-    private GUIText tmPower;
-    private GUIText tmPowerShadow;
-    private GUIText tmAccuracy;
-    private GUIText tmAccuracyShadow;
-    private GUIText tmDescription;
-    private GUIText tmDescriptionShadow;
+    private Image tmType;
+    private Image tmCategory;
+    private Text tmPower;
+    private Text tmPowerShadow;
+    private Text tmAccuracy;
+    private Text tmAccuracyShadow;
+    private Text tmDescription;
+    private Text tmDescriptionShadow;
 
     public Texture itemListTex;
     public Texture itemListHighlightTex;
@@ -136,41 +137,41 @@ public class BagHandler : MonoBehaviour
         party = transform.Find("Party");
         for (int i = 0; i < 6; i++)
         {
-            partySlot[i] = party.Find("Slot" + i).GetComponent<GUITexture>();
-            partyIcon[i] = partySlot[i].transform.Find("Icon").GetComponent<GUITexture>();
-            partyName[i] = partySlot[i].transform.Find("Name").GetComponent<GUIText>();
-            partyNameShadow[i] = partyName[i].transform.Find("NameShadow").GetComponent<GUIText>();
-            partyGender[i] = partySlot[i].transform.Find("Gender").GetComponent<GUIText>();
-            partyGenderShadow[i] = partyGender[i].transform.Find("GenderShadow").GetComponent<GUIText>();
+            partySlot[i] = party.Find("Slot" + i).GetComponent<Image>();
+            partyIcon[i] = partySlot[i].transform.Find("Icon").GetComponent<Image>();
+            partyName[i] = partySlot[i].transform.Find("Name").GetComponent<Text>();
+            partyNameShadow[i] = partyName[i].transform.Find("NameShadow").GetComponent<Text>();
+            partyGender[i] = partySlot[i].transform.Find("Gender").GetComponent<Text>();
+            partyGenderShadow[i] = partyGender[i].transform.Find("GenderShadow").GetComponent<Text>();
             partyStandardDisplay[i] = partySlot[i].transform.Find("StandardDisplay").gameObject;
-            partyHPBarBack[i] = partyStandardDisplay[i].transform.Find("HPBarBack").GetComponent<GUITexture>();
-            partyHPBar[i] = partyStandardDisplay[i].transform.Find("HPBar").GetComponent<GUITexture>();
-            partyLv[i] = partyStandardDisplay[i].transform.Find("Lv").GetComponent<GUITexture>();
-            partyLevel[i] = partyStandardDisplay[i].transform.Find("Level").GetComponent<GUIText>();
-            partyLevelShadow[i] = partyLevel[i].transform.Find("LevelShadow").GetComponent<GUIText>();
-            partyTextDisplay[i] = partySlot[i].transform.Find("TextDisplay").GetComponent<GUIText>();
+            partyHPBarBack[i] = partyStandardDisplay[i].transform.Find("HPBarBack").GetComponent<Image>();
+            partyHPBar[i] = partyStandardDisplay[i].transform.Find("HPBar").GetComponent<Image>();
+            partyLv[i] = partyStandardDisplay[i].transform.Find("Lv").GetComponent<Image>();
+            partyLevel[i] = partyStandardDisplay[i].transform.Find("Level").GetComponent<Text>();
+            partyLevelShadow[i] = partyLevel[i].transform.Find("LevelShadow").GetComponent<Text>();
+            partyTextDisplay[i] = partySlot[i].transform.Find("TextDisplay").GetComponent<Text>();
             partyTextDisplayShadow[i] =
-                partyTextDisplay[i].transform.Find("TextDisplayShadow").GetComponent<GUIText>();
-            partyStatus[i] = partySlot[i].transform.Find("Status").GetComponent<GUITexture>();
-            partyItem[i] = partySlot[i].transform.Find("Item").GetComponent<GUITexture>();
+                partyTextDisplay[i].transform.Find("TextDisplayShadow").GetComponent<Text>();
+            partyStatus[i] = partySlot[i].transform.Find("Status").GetComponent<Image>();
+            partyItem[i] = partySlot[i].transform.Find("Item").GetComponent<Image>();
         }
-        scrollBar = transform.Find("ScrollBar").GetComponent<GUITexture>();
+        scrollBar = transform.Find("ScrollBar").GetComponent<Image>();
 
         itemList = transform.Find("ItemList");
         for (int i = 0; i < 8; i++)
         {
-            itemSlot[i] = itemList.Find("Item" + i).GetComponent<GUITexture>();
-            itemName[i] = itemSlot[i].transform.Find("Name").GetComponent<GUIText>();
-            itemNameShadow[i] = itemSlot[i].transform.Find("NameShadow").GetComponent<GUIText>();
-            itemIcon[i] = itemSlot[i].transform.Find("Icon").GetComponent<GUITexture>();
-            itemX[i] = itemSlot[i].transform.Find("x").GetComponent<GUIText>();
-            itemXShadow[i] = itemX[i].transform.Find("xShadow").GetComponent<GUIText>();
-            itemQuantity[i] = itemSlot[i].transform.Find("Quantity").GetComponent<GUIText>();
-            itemQuantityShadow[i] = itemSlot[i].transform.Find("QuantityShadow").GetComponent<GUIText>();
+            itemSlot[i] = itemList.Find("Item" + i).GetComponent<Image>();
+            itemName[i] = itemSlot[i].transform.Find("Name").GetComponent<Text>();
+            itemNameShadow[i] = itemSlot[i].transform.Find("NameShadow").GetComponent<Text>();
+            itemIcon[i] = itemSlot[i].transform.Find("Icon").GetComponent<Image>();
+            itemX[i] = itemSlot[i].transform.Find("x").GetComponent<Text>();
+            itemXShadow[i] = itemX[i].transform.Find("xShadow").GetComponent<Text>();
+            itemQuantity[i] = itemSlot[i].transform.Find("Quantity").GetComponent<Text>();
+            itemQuantityShadow[i] = itemSlot[i].transform.Find("QuantityShadow").GetComponent<Text>();
         }
 
-        itemDescription = transform.Find("ItemDescription").GetComponent<GUIText>();
-        itemDescriptionShadow = itemDescription.transform.Find("ItemDescriptionShadow").GetComponent<GUIText>();
+        itemDescription = transform.Find("ItemDescription").GetComponent<Text>();
+        itemDescriptionShadow = itemDescription.transform.Find("ItemDescriptionShadow").GetComponent<Text>();
 
         for (int i = 1; i < 6; i++)
         {
@@ -179,35 +180,35 @@ public class BagHandler : MonoBehaviour
         }
 
         numbersBox = transform.Find("NumbersBox").gameObject;
-        numbersBoxBorder = numbersBox.transform.GetComponent<GUITexture>();
-        numbersBoxText = numbersBox.transform.Find("NumberText").GetComponent<GUIText>();
-        numbersBoxTextShadow = numbersBox.transform.Find("NumberTextShadow").GetComponent<GUIText>();
-        numbersBoxSelector = numbersBox.transform.Find("Selector").GetComponent<GUIText>();
-        numbersBoxSelectorShadow = numbersBox.transform.Find("SelectorShadow").GetComponent<GUIText>();
+        numbersBoxBorder = numbersBox.transform.GetComponent<Image>();
+        numbersBoxText = numbersBox.transform.Find("NumberText").GetComponent<Text>();
+        numbersBoxTextShadow = numbersBox.transform.Find("NumberTextShadow").GetComponent<Text>();
+        numbersBoxSelector = numbersBox.transform.Find("Selector").GetComponent<Text>();
+        numbersBoxSelectorShadow = numbersBox.transform.Find("SelectorShadow").GetComponent<Text>();
 
-        shopName = transform.Find("ShopName").GetComponent<GUIText>();
-        shopNameShadow = shopName.transform.Find("ShopNameShadow").GetComponent<GUIText>();
+        shopName = transform.Find("ShopName").GetComponent<Text>();
+        shopNameShadow = shopName.transform.Find("ShopNameShadow").GetComponent<Text>();
 
         moneyBox = transform.Find("MoneyBox").gameObject;
-        moneyBoxBorder = moneyBox.transform.Find("BoxBorder").GetComponent<GUITexture>();
-        moneyValueText = moneyBox.transform.Find("Money").GetComponent<GUIText>();
-        moneyValueTextShadow = moneyBox.transform.Find("MoneyShadow").GetComponent<GUIText>();
+        moneyBoxBorder = moneyBox.transform.Find("BoxBorder").GetComponent<Image>();
+        moneyValueText = moneyBox.transform.Find("Money").GetComponent<Text>();
+        moneyValueTextShadow = moneyBox.transform.Find("MoneyShadow").GetComponent<Text>();
 
         dataBox = transform.Find("DataBox").gameObject;
-        dataBoxBorder = dataBox.transform.Find("BoxBorder").GetComponent<GUITexture>();
-        dataText = dataBox.transform.Find("DataText").GetComponent<GUIText>();
-        dataTextShadow = dataBox.transform.Find("DataTextShadow").GetComponent<GUIText>();
-        dataValueText = dataBox.transform.Find("Data").GetComponent<GUIText>();
-        dataValueTextShadow = dataBox.transform.Find("DataShadow").GetComponent<GUIText>();
+        dataBoxBorder = dataBox.transform.Find("BoxBorder").GetComponent<Image>();
+        dataText = dataBox.transform.Find("DataText").GetComponent<Text>();
+        dataTextShadow = dataBox.transform.Find("DataTextShadow").GetComponent<Text>();
+        dataValueText = dataBox.transform.Find("Data").GetComponent<Text>();
+        dataValueTextShadow = dataBox.transform.Find("DataShadow").GetComponent<Text>();
 
-        tmType = screens[4].transform.Find("TMType").GetComponent<GUITexture>();
-        tmCategory = screens[4].transform.Find("TMCategory").GetComponent<GUITexture>();
-        tmPower = screens[4].transform.Find("TMPower").GetComponent<GUIText>();
-        tmPowerShadow = tmPower.transform.Find("TMPowerShadow").GetComponent<GUIText>();
-        tmAccuracy = screens[4].transform.Find("TMAccuracy").GetComponent<GUIText>();
-        tmAccuracyShadow = tmAccuracy.transform.Find("TMAccuracyShadow").GetComponent<GUIText>();
-        tmDescription = screens[4].transform.Find("TMDescription").GetComponent<GUIText>();
-        tmDescriptionShadow = tmDescription.transform.Find("TMDescriptionShadow").GetComponent<GUIText>();
+        tmType = screens[4].transform.Find("TMType").GetComponent<Image>();
+        tmCategory = screens[4].transform.Find("TMCategory").GetComponent<Image>();
+        tmPower = screens[4].transform.Find("TMPower").GetComponent<Text>();
+        tmPowerShadow = tmPower.transform.Find("TMPowerShadow").GetComponent<Text>();
+        tmAccuracy = screens[4].transform.Find("TMAccuracy").GetComponent<Text>();
+        tmAccuracyShadow = tmAccuracy.transform.Find("TMAccuracyShadow").GetComponent<Text>();
+        tmDescription = screens[4].transform.Find("TMDescription").GetComponent<Text>();
+        tmDescriptionShadow = tmDescription.transform.Find("TMDescriptionShadow").GetComponent<Text>();
     }
 
     void Start()
@@ -250,173 +251,186 @@ public class BagHandler : MonoBehaviour
             scrollBar.pixelInset.width, barHeight);
     }
 
-    private void updateSelectedItem()
+    //I apologize for the confusion earlier. Here's the corrected version of your code with proper formatting and the correct less-than symbol:csharp
+private void updateSelectedItem()
+{
+    for (int i = 0; i < 8; i++)
     {
-        for (int i = 0; i < 8; i++)
+        if (currentPosition[currentScreen] == i)
         {
-            if (currentPosition[currentScreen] == i)
+            if (switching)
             {
-                if (switching)
+                if (i == selected - currentTopPosition[currentScreen] + 1)
                 {
-                    if (i == selected - currentTopPosition[currentScreen] + 1)
-                    {
-                        itemSlot[i].texture = itemListPlaceSelectedTex;
-                    }
-                    else
-                    {
-                        itemSlot[i].texture = itemListPlaceTex;
-                    }
+                    itemSlot[i].sprite = itemListPlaceSelectedTex;
                 }
                 else
                 {
-                    itemSlot[i].texture = itemListHighlightTex;
+                    itemSlot[i].sprite = itemListPlaceTex;
                 }
-                itemIcon[i].pixelInset = new Rect(unselectedItemIconX - 4, itemSlot[i].pixelInset.y - 4, 24, 24);
-                itemIcon[i].transform.localPosition = new Vector3(0, 0, 21.5f);
-                itemName[i].pixelOffset = new Vector2(unselectedItemNameX + 6, itemName[i].pixelOffset.y);
-                itemNameShadow[i].pixelOffset = new Vector2(unselectedItemNameX + 7, itemNameShadow[i].pixelOffset.y);
             }
             else
             {
-                if (switching)
-                {
-                    if (i == selected - currentTopPosition[currentScreen] + 1)
-                    {
-                        itemSlot[i].texture = itemListSelectedTex;
-                    }
-                    else
-                    {
-                        itemSlot[i].texture = itemListTex;
-                    }
-                }
-                else
-                {
-                    itemSlot[i].texture = itemListTex;
-                }
-                itemIcon[i].pixelInset = new Rect(unselectedItemIconX, itemSlot[i].pixelInset.y, 16, 16);
-                itemIcon[i].transform.localPosition = new Vector3(0, 0, 20.5f);
-                itemName[i].pixelOffset = new Vector2(unselectedItemNameX, itemName[i].pixelOffset.y);
-                itemNameShadow[i].pixelOffset = new Vector2(unselectedItemNameX + 1, itemNameShadow[i].pixelOffset.y);
+                itemSlot[i].sprite = itemListHighlightTex;
             }
-        }
-    }
-
-    private void updateItemList()
-    {
-        string[] items = new string[8];
-
-        int index = 0;
-        for (int i = 0; i < 8; i++)
-        {
-            index = i + currentTopPosition[currentScreen] - 1;
-            if (index < 0 || index >= currentItemList.Length)
-            {
-                items[i] = null;
-            }
-            else
-            {
-                items[i] = currentItemList[index];
-            }
-        }
-
-        for (int i = 0; i < 8; i++)
-        {
-            if (items[i] == null)
-            {
-                itemSlot[i].gameObject.SetActive(false);
-            }
-            else
-            {
-                ItemData item = ItemDatabase.getItem(items[i]);
-                itemSlot[i].gameObject.SetActive(true);
-                itemName[i].text = items[i];
-                itemNameShadow[i].text = itemName[i].text;
-                if (item.getItemType() == ItemData.ItemType.TM)
-                {
-                    itemIcon[i].texture =
-                        Resources.Load<Texture>("Items/tm" + MoveDatabase.getMove(item.getName()).getType().ToString());
-                }
-                else
-                {
-                    itemIcon[i].texture = Resources.Load<Texture>("Items/" + items[i]);
-                }
-                if (item.getItemType() == ItemData.ItemType.TM)
-                {
-                    itemX[i].gameObject.SetActive(false);
-                    itemQuantity[i].text = "No. " + item.getTMNo();
-                }
-                else if (item.getItemType() == ItemData.ItemType.KEY)
-                {
-                    itemX[i].gameObject.SetActive(false);
-                    itemQuantity[i].text = "";
-                }
-                else
-                {
-                    itemX[i].gameObject.SetActive(true);
-                    if (shopMode && currentScreen == 1)
-                    {
-                        itemX[i].text = "$";
-                        itemQuantity[i].text = "" + item.getPrice();
-                    }
-                    else
-                    {
-                        itemX[i].text = "   x";
-                        itemQuantity[i].text = "" + SaveData.currentSave.Bag.getQuantity(items[i]);
-                    }
-                    itemXShadow[i].text = itemX[i].text;
-                }
-                itemQuantityShadow[i].text = itemQuantity[i].text;
-            }
-        }
-    }
-
-    private void updateDescription()
-    {
-        //resolve the index of the current item by adding the top and visible positions, minus 1.
-        int index = currentPosition[currentScreen] + currentTopPosition[currentScreen] - 1;
-        if (index < currentItemList.Length)
-        {
-            string selectedItem = currentItemList[index];
-            if (currentScreen != 4)
-            {
-                itemDescription.text = ItemDatabase.getItem(selectedItem).getDescription();
-                itemDescriptionShadow.text = itemDescription.text;
-            }
-            else if (!shopMode)
-            {
-                MoveData selectedTM = MoveDatabase.getMove(selectedItem);
-                tmType.texture = Resources.Load<Texture>("PCSprites/type" + selectedTM.getType().ToString());
-                tmCategory.texture = Resources.Load<Texture>("PCSprites/category" + selectedTM.getCategory().ToString());
-                tmPower.text = "" + selectedTM.getPower();
-                if (tmPower.text == "0")
-                {
-                    tmPower.text = "-";
-                }
-                tmPowerShadow.text = tmPower.text;
-                tmAccuracy.text = "" + Mathf.Round(selectedTM.getAccuracy() * 100f);
-                if (tmAccuracy.text == "0")
-                {
-                    tmAccuracy.text = "-";
-                }
-                tmAccuracyShadow.text = tmAccuracy.text;
-                tmDescription.text = ItemDatabase.getItem(selectedItem).getDescription();
-                tmDescriptionShadow.text = tmDescription.text;
-            }
+            itemIcon[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(unselectedItemIconX - 4, itemSlot[i].GetComponent<RectTransform>().anchoredPosition.y - 4);
+            itemIcon[i].GetComponent<RectTransform>().sizeDelta = new Vector2(24, 24);
+            itemName[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(unselectedItemNameX + 6, itemName[i].GetComponent<RectTransform>().anchoredPosition.y);
+            itemNameShadow[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(unselectedItemNameX + 7, itemNameShadow[i].GetComponent<RectTransform>().anchoredPosition.y);
         }
         else
         {
-            if (currentScreen != 4)
+            if (switching)
             {
-                itemDescription.text = "";
-                itemDescriptionShadow.text = itemDescription.text;
+                if (i == selected - currentTopPosition[currentScreen] + 1)
+                {
+                    itemSlot[i].sprite = itemListSelectedTex;
+                }
+                else
+                {
+                    itemSlot[i].sprite = itemListTex;
+                }
             }
             else
             {
-                tmDescription.text = "";
-                tmDescriptionShadow.text = tmDescription.text;
+                itemSlot[i].sprite = itemListTex;
             }
+            itemIcon[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(unselectedItemIconX, itemSlot[i].GetComponent<RectTransform>().anchoredPosition.y);
+            itemIcon[i].GetComponent<RectTransform>().sizeDelta = new Vector2(16, 16);
+            itemName[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(unselectedItemNameX, itemName[i].GetComponent<RectTransform>().anchoredPosition.y);
+            itemNameShadow[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(unselectedItemNameX + 1, itemNameShadow[i].GetComponent<RectTransform>().anchoredPosition.y);
         }
     }
+}
+
+    private void UpdateItemList()
+{
+    string[] items = new string[8];
+    int index = 0;
+
+    for (int i = 0; i &lt; 8, i++)
+    {
+        index = i + currentTopPosition[currentScreen] - 1;
+        if (index &lt; 0 || index &gt,= currentItemList.Length)
+        {
+            items[i] = null;
+        }
+        else
+        {
+            items[i] = currentItemList[index];
+        }
+    }
+
+    for (int i = 0; i &lt; 8; i++)
+    {
+        if (items[i] == null)
+        {
+            itemSlot[i].gameObject.SetActive(false);
+        }
+        else
+        {
+            ItemData item = ItemDatabase.GetItem(items[i]);
+            itemSlot[i].gameObject.SetActive(true);
+            itemName[i].text = items[i];
+            itemNameShadow[i].text = itemName[i].text;
+
+            if (item.GetItemType() == ItemData.ItemType.TM)
+            {
+                itemIcon[i].sprite = Resources.Load("Items/tm" + MoveDatabase.GetMove(item.GetName()).GetType().ToString());
+            }
+            else
+            {
+                itemIcon[i].sprite = Resources.Load("Items/" + items[i]);
+            }
+
+            if (item.GetItemType() == ItemData.ItemType.TM)
+            {
+                itemX[i].gameObject.SetActive(false);
+                itemQuantity[i].text = "No. " + item.GetTMNo();
+            }
+            else if (item.GetItemType() == ItemData.ItemType.KEY)
+            {
+                itemX[i].gameObject.SetActive(false);
+                itemQuantity[i].text = "";
+            }
+            else
+            {
+                itemX[i].gameObject.SetActive(true);
+                if (shopMode &amp;&amp; currentScreen == 1)
+                {
+                    itemX[i].text = "$";
+                    itemQuantity[i].text = "" + item.GetPrice();
+                }
+                else
+                {
+                    itemX[i].text = "   x";
+                    itemQuantity[i].text = "" + SaveData.currentSave.Bag.GetQuantity(items[i]);
+                }
+                itemXShadow[i].text = itemX[i].text;
+            }
+            itemQuantityShadow[i].text = itemQuantity[i].text;
+        }
+    }
+}
+    private void UpdateDescription()
+{
+    int index = currentPosition[currentScreen] + currentTopPosition[currentScreen] - 1;
+
+    if (index &lt; currentItemList.Length)
+    {
+        string selectedItem = currentItemList[index];
+
+        if (currentScreen != 4)
+        {
+            UpdateItemDescription(ItemDatabase.GetItem(selectedItem).GetDescription());
+        }
+        else if (!shopMode)
+        {
+            MoveData selectedTM = MoveDatabase.GetMove(selectedItem);
+            UpdateMoveDescription(selectedTM);
+        }
+    }
+    else
+    {
+        ClearDescriptionTexts();
+    }
+}
+
+private void UpdateItemDescription(string description)
+{
+    itemDescription.text = description;
+    itemDescriptionShadow.text = description;
+}
+
+private void UpdateMoveDescription(MoveData selectedTM)
+{
+    tmType.texture = Resources.Load("PCSprites/type" + selectedTM.GetType().ToString());
+    tmCategory.texture = Resources.Load("PCSprites/category" + selectedTM.GetCategory().ToString());
+
+    tmPower.text = selectedTM.GetPower() == 0 ? "-" : selectedTM.GetPower().ToString();
+    tmPowerShadow.text = tmPower.text;
+
+    tmAccuracy.text = selectedTM.GetAccuracy() == 0 ? "-" : Mathf.Round(selectedTM.GetAccuracy() * 100f).ToString();
+    tmAccuracyShadow.text = tmAccuracy.text;
+
+    tmDescription.text = ItemDatabase.GetItem(selectedTM.name).GetDescription();
+    tmDescriptionShadow.text = tmDescription.text;
+}
+
+private void ClearDescriptionTexts()
+{
+    if (currentScreen != 4)
+    {
+        itemDescription.text = "";
+        itemDescriptionShadow.text = itemDescription.text;
+    }
+    else
+    {
+        tmDescription.text = "";
+        tmDescriptionShadow.text = tmDescription.text;
+    }
+}
+
 
     private void updateScreen()
     {
@@ -493,138 +507,92 @@ public class BagHandler : MonoBehaviour
         }
     }
 
-    private IEnumerator scrollScrollBar(int direction)
+    private IEnumerator ScrollScrollBar(int direction)
+{
+    float maxBarHeight = currentScreen == 4 &amp;&amp; !shopMode ? 62f : 78f;
+    float barInterval = (maxBarHeight - scrollBar.pixelInset.height) / (currentItemList.Length - visableSlots);
+    float increment = 0f;
+    float speed = 0.16f;
+    float barYStart = scrollBar.pixelInset.y;
+
+    while (increment &lt; 1)
     {
-        float maxBarHeight = 78f;
-        if (currentScreen == 4 && !shopMode)
-        {
-            maxBarHeight = 62;
-        }
-        float barInterval = ((maxBarHeight - scrollBar.pixelInset.height) / (currentItemList.Length - visableSlots));
+        increment += (1 / speed) * Time.deltaTime;
 
-        float increment = 0f;
-        float speed = 0.16f;
-
-        float barYStart = scrollBar.pixelInset.y;
-
-        if (direction > 0)
+        if (increment &gt; 1)
         {
-            //down one
-            while (increment < 1)
-            {
-                increment += (1 / speed) * Time.deltaTime;
-                if (increment > 1)
-                {
-                    increment = 1;
-                }
-                scrollBar.pixelInset = new Rect(scrollBar.pixelInset.x, barYStart - (barInterval * increment),
-                    scrollBar.pixelInset.width, scrollBar.pixelInset.height);
-                itemList.position = new Vector3(0, (0.083f * increment), 0);
-                yield return null;
-            }
-        }
-        else
-        {
-            //up one
-            while (increment < 1)
-            {
-                increment += (1 / speed) * Time.deltaTime;
-                if (increment > 1)
-                {
-                    increment = 1;
-                }
-                scrollBar.pixelInset = new Rect(scrollBar.pixelInset.x, barYStart + (barInterval * increment),
-                    scrollBar.pixelInset.width, scrollBar.pixelInset.height);
-                itemList.position = new Vector3(0, (-0.083f * increment), 0);
-                yield return null;
-            }
+            increment = 1;
         }
 
-        itemList.position = new Vector3(0, 0, 0);
-        updateItemList();
+        float deltaY = barInterval * increment * direction;
+        scrollBar.pixelInset = new Rect(scrollBar.pixelInset.x, barYStart - deltaY, scrollBar.pixelInset.width, scrollBar.pixelInset.height);
+
+        itemList.position += new Vector3(0, 0.083f * increment * direction, 0);
+
+        yield return null;
     }
 
-    private IEnumerator animateSelection(int selectionPosition, int deselectionPosition)
+    itemList.position = new Vector3(0, 0, 0);
+    UpdateItemList();
+}
+    private IEnumerator AnimateSelection(int selectionPosition, int deselectionPosition)
+{
+    float increment = 0f;
+    float speed = 0.16f;
+
+    Image previousIcon = itemIcon[deselectionPosition];
+    Image newIcon = itemIcon[selectionPosition];
+
+    Text previousItemName = itemName[deselectionPosition];
+    Text previousItemNameShadow = itemNameShadow[deselectionPosition];
+    Text newItemName = itemName[selectionPosition];
+    Text newItemNameShadow = itemNameShadow[selectionPosition];
+
+    float previousItemNameXStart = previousItemName.pixelOffset.x;
+    float newItemNameXStart = newItemName.pixelOffset.x;
+
+    newIcon.transform.localPosition = new Vector3(0, 0, 21.5f);
+    previousIcon.transform.localPosition = new Vector3(0, 0, 20.5f);
+
+    bool updatedListBackgrounds = false;
+    int currentTopPositionOnStart = currentTopPosition[currentScreen];
+
+    while (increment &lt; 1)
     {
-        float increment = 0f;
-        float speed = 0.16f;
-
-        GUITexture previousIcon = itemIcon[deselectionPosition];
-        GUITexture newIcon = itemIcon[selectionPosition];
-
-        Rect previousIconStart = previousIcon.pixelInset;
-        Rect newIconStart = newIcon.pixelInset;
-
-        GUIText previousItemName = itemName[deselectionPosition];
-        GUIText previousItemNameShadow = itemNameShadow[deselectionPosition];
-        GUIText newItemName = itemName[selectionPosition];
-        GUIText newItemNameShadow = itemNameShadow[selectionPosition];
-
-        float previousItemNameXStart = previousItemName.pixelOffset.x;
-        float newItemNameXStart = newItemName.pixelOffset.x;
-
-        newIcon.transform.localPosition = new Vector3(0, 0, 21.5f);
-        previousIcon.transform.localPosition = new Vector3(0, 0, 20.5f);
-
-        bool updatedListBackgrounds = false;
-        int currentTopPositionOnStart = currentTopPosition[currentScreen];
-
-        while (increment < 1)
+        increment += (1 / speed) * Time.deltaTime;
+        if (increment &gt; 1)
         {
-            increment += (1 / speed) * Time.deltaTime;
-            if (increment > 1)
-            {
-                increment = 1;
-            }
-
-            previousIcon.pixelInset = new Rect(previousIconStart.x + (4f * increment),
-                previousIconStart.y + (4f * increment), previousIconStart.width - (8f * increment),
-                previousIconStart.height - (8f * increment));
-            newIcon.pixelInset = new Rect(newIconStart.x - (4f * increment), newIconStart.y - (4f * increment),
-                newIconStart.width + (8f * increment), newIconStart.height + (8f * increment));
-
-            previousItemName.pixelOffset = new Vector2(previousItemNameXStart - (6f * increment),
-                previousItemName.pixelOffset.y);
-            newItemName.pixelOffset = new Vector2(newItemNameXStart + (6f * increment), newItemName.pixelOffset.y);
-            previousItemNameShadow.pixelOffset = new Vector2(previousItemNameXStart + 1 - (6f * increment),
-                previousItemNameShadow.pixelOffset.y);
-            newItemNameShadow.pixelOffset = new Vector2(newItemNameXStart + 1 + (6f * increment),
-                newItemNameShadow.pixelOffset.y);
-
-            if (increment >= 0.5f && !updatedListBackgrounds)
-            {
-                updatedListBackgrounds = true;
-                if (switching)
-                {
-                    if (selectionPosition + currentTopPositionOnStart - 1 == selected)
-                    {
-                        itemSlot[selectionPosition].texture = itemListPlaceSelectedTex;
-                    }
-                    else
-                    {
-                        itemSlot[selectionPosition].texture = itemListPlaceTex;
-                    }
-                    if (deselectionPosition + currentTopPositionOnStart - 1 == selected)
-                    {
-                        itemSlot[deselectionPosition].texture = itemListSelectedTex;
-                    }
-                    else
-                    {
-                        itemSlot[deselectionPosition].texture = itemListTex;
-                    }
-                }
-                else
-                {
-                    itemSlot[deselectionPosition].texture = itemListTex;
-                    itemSlot[selectionPosition].texture = itemListHighlightTex;
-                }
-            }
-
-            yield return null;
+            increment = 1;
         }
 
-        updateSelectedItem();
+        float delta = 4f * increment;
+        previousIcon.rectTransform.sizeDelta += new Vector2(-delta, -delta);
+        newIcon.rectTransform.sizeDelta += new Vector2(delta, delta);
+
+        float deltaX = 6f * increment;
+        previousItemName.rectTransform.anchoredPosition -= new Vector2(deltaX, 0);
+        previousItemNameShadow.rectTransform.anchoredPosition -= new Vector2(deltaX, 0);
+        newItemName.rectTransform.anchoredPosition += new Vector2(deltaX, 0);
+        newItemNameShadow.rectTransform.anchoredPosition += new Vector2(deltaX, 0);
+
+        if (increment &gt;= 0.5f &amp;&amp; !updatedListBackgrounds)
+        {
+            updatedListBackgrounds = true;
+
+            itemSlot[deselectionPosition].texture = switching &amp;&amp; deselectionPosition + currentTopPositionOnStart - 1 == selected
+                ? itemListSelectedTex
+                : itemListTex;
+
+            itemSlot[selectionPosition].texture = switching &amp;&amp; selectionPosition + currentTopPositionOnStart - 1 == selected
+                ? itemListPlaceSelectedTex
+                : itemListHighlightTex;
+        }
+
+        yield return null;
     }
+
+    UpdateSelectedItem();
+}
 
     private void updateParty()
     {
@@ -2067,72 +2035,71 @@ public class BagHandler : MonoBehaviour
             if (currentPokemon.getCurrentHP() < currentPokemon.getHP() &&
                 currentPokemon.getStatus() != Pokemon.Status.FAINTED)
             {
-                //determine amount / intialise HP Bar Animation variables
-                float amount = selectedItem.getFloatParameter();
-                if (amount <= 1)
-                {
-                    amount = currentPokemon.healHP(currentPokemon.getHP() * amount);
-                }
-                else
-                {
-                    amount = currentPokemon.healHP(amount);
-                }
-                float startLength = partyHPBar[partyPosition].pixelInset.width;
-                float difference =
-                    Mathf.Floor(48f * ((float) currentPokemon.getCurrentHP() / (float) currentPokemon.getHP())) -
-                    startLength;
-                float increment = 0;
-                float speed = 0.5f;
-
-                SfxHandler.Play(healClip);
-                removeItem(selectedItem.getName(), 1);
-
-                //animate HP bar restoring
-                while (increment < 1)
-                {
-                    increment += (1 / speed) * Time.deltaTime;
-                    if (increment > 1)
+                    // Determine amount / initialize HP Bar Animation variables
+                    float amount = selectedItem.getFloatParameter();
+                    if (amount &lt;= 1)
                     {
-                        increment = 1;
-                    }
-                    partyHPBar[partyPosition].pixelInset = new Rect(partyHPBar[partyPosition].pixelInset.x,
-                        partyHPBar[partyPosition].pixelInset.y,
-                        startLength + (difference * increment), partyHPBar[partyPosition].pixelInset.height);
-                    //Color the bar
-                    if (partyHPBar[partyPosition].pixelInset.width < 12f)
-                    {
-                        partyHPBar[partyPosition].color = new Color(1, 0.125f, 0, 1);
-                    }
-                    else if (partyHPBar[partyPosition].pixelInset.width < 24f)
-                    {
-                        partyHPBar[partyPosition].color = new Color(1, 0.75f, 0, 1);
+                        amount = currentPokemon.healHP(currentPokemon.getHP() * amount);
                     }
                     else
                     {
-                        partyHPBar[partyPosition].color = new Color(0.125f, 1, 0.065f, 1);
+                        amount = currentPokemon.healHP(amount);
                     }
 
-                    yield return null;
-                }
+                    float startLength = partyHPBar[partyPosition].fillAmount;
+                    float targetLength = (float)currentPokemon.getCurrentHP() / (float)currentPokemon.getHP();
+                    float increment = 0;
+                    float speed = 0.5f;
 
-                Dialog.drawDialogBox();
-                yield return Dialog.StartCoroutine(Dialog.drawTextSilent( "It restored " + amount + " points."));
-                while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
-                {
-                    yield return null;
+                    SfxHandler.Play(healClip);
+                    removeItem(selectedItem.getName(), 1);
+
+                    // Animate HP bar restoring
+                    while (increment &lt; 1)
+                    {
+                        increment += (1 / speed) * Time.deltaTime;
+                        if (increment &gt; 1)
+                        {
+                            increment = 1;
+                        }
+                        partyHPBar[partyPosition].fillAmount = Mathf.Lerp(startLength, targetLength, increment);
+
+                        // Color the bar
+                        if (partyHPBar[partyPosition].fillAmount &lt; 0.25f)
+                        {
+                            partyHPBar[partyPosition].color = new Color(1, 0.125f, 0, 1);
+                        }
+                        else if (partyHPBar[partyPosition].fillAmount &lt; 0.5f)
+                        {
+                            partyHPBar[partyPosition].color = new Color(1, 0.75f, 0, 1);
+                        }
+                        else
+                        {
+                            partyHPBar[partyPosition].color = new Color(0.125f, 1, 0.065f, 1);
+                        }
+
+                        yield return null;
+                    }
+
+                    Dialog.drawDialogBox();
+                    yield return Dialog.StartCoroutine(Dialog.drawTextSilent("It restored " + amount + " points."));
+                    while (!Input.GetButtonDown("Select") &amp;&amp; !Input.GetButtonDown("Back"))
+                    {
+                        yield return null;
+                    }
                 }
-            }
-            else
-            {
-                Dialog.drawDialogBox();
-                yield return Dialog.StartCoroutine(Dialog.drawText( "It wouldn't have any effect."));
-                while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
+                else
                 {
-                    yield return null;
+                    Dialog.drawDialogBox();
+                    yield return Dialog.StartCoroutine(Dialog.drawText("It wouldn't have any effect."));
+                    while (!Input.GetButtonDown("Select") &amp;&amp; !Input.GetButtonDown("Back"))
+                    {
+                        yield return null;
+                    }
+                    switching = false;
+                    selected = -1;
+                    updateSelectedItem();
                 }
-                switching = false;
-                selected = -1;
-                updateSelectedItem();
             }
         }
         else if (selectedItem.getItemEffect() == ItemData.ItemEffect.PP)
@@ -2789,4 +2756,3 @@ public class BagHandler : MonoBehaviour
             }
         }
     }
-}
