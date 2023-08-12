@@ -571,9 +571,9 @@ public class EvolutionHandler : MonoBehaviour
             sizeModified = (((float) i / 7f) * maxSize + maxSize) / 2f;
             if (!stopAnimations)
             {
-                Image particle = particles.createParticle(smokeParticle, ScaleToScreen(positionX, positionYmodified),
-                    ScaleToScreen(positionX + Random.Range(0.01f, 0.04f), positionYmodified - 0.02f),
-                    sizeModified, 0, 0.6f, 0, sizeModified * 0.33f);
+                /*Image particle = particles.createParticle(smokeParticle, ScaleToScreen(positionX, positionYmodified), ScaleToScreen(positionX + Random.Range(0.01f, 0.04f), positionYmodified - 0.02f), sizeModified, 0, 0.6f, 0, sizeModified * 0.33f);
+                //Image particle = particles.createParticle(smokeParticle, ScaleToScreen(positionX, positionYmodified), ScaleToScreen(positionX + Random.Range(0.01f, 0.04f), positionYmodified - 0.02f), sizeModified, 0, 0.6f, 0, sizeModified * 0.33f);
+
 
                 if (particle != null)
                 {
@@ -583,7 +583,7 @@ public class EvolutionHandler : MonoBehaviour
                 else
                 {
                     Debug.Log("Particle Discarded");
-                }
+                }*/
             }
             if (direction > 0)
             {
