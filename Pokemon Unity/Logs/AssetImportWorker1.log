@@ -53299,3 +53299,12 @@ Start importing Assets/Scripts/SceneHandlers/BagHandler.cs using Guid(56794cd7ac
  -> (artifact id: '97524d58ed99c3d005975c99efad6454') in 0.026588 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 43110.597599 seconds.
+  path: Assets/Scripts/SceneHandlers/EvolutionHandler.cs
+  artifactKey: Guid(2decdc6cdb079904aa72eccb8643a392) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Scripts/SceneHandlers/EvolutionHandler.cs using Guid(2decdc6cdb079904aa72eccb8643a392) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '1e877c3a96ef9eccd410f274a87610c3') in 0.603392 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
