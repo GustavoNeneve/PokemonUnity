@@ -783,7 +783,7 @@ namespace PokemonUnity.Battle
 			//ToDo: Array for opposing pokemons, [i] changes based on if double battle
 			Pokemon opp1 = thispkmn.pbOpposing1;
 			Pokemon opp2 = thispkmn.pbOpposing2;
-			if (thismove != null || thismove.MoveId == 0) return false;
+			if (thismove == null || thismove.MoveId == 0) return false;
 			if (thismove.PP <= 0 && thismove.TotalPP > 0 && !sleeptalk) {
 				//if (showMessages) pbDisplayPaused(_INTL("There's no PP left for this move!"));
 				return false;
