@@ -90,7 +90,7 @@ namespace PokemonUnity.Character
 							l.Add(new KeyValuePair<Items, int>(item.Key, 99));
 			//				index++;
 						}
-						int leftovers = total % 99;
+						int leftovers = count % 99;
 			//			pairs[index] = new KeyValuePair<Items, int>(item.Key, leftovers);
 						l.Add(new KeyValuePair<Items, int>(item.Key, leftovers));
 						//total += (int)Math.Ceiling(total / 99d);
@@ -186,7 +186,7 @@ namespace PokemonUnity.Character
 			int result = 0;
 			for (int i = 0; i < Pokemons.Length; i++)
 			{
-				if (Pokemons[i] != null || Pokemons[i].Species != PokemonUnity.Pokemons.NONE)
+				if (Pokemons[i] != null && Pokemons[i].Species != PokemonUnity.Pokemons.NONE)
 				{
 					result += 1;
 				}
@@ -321,7 +321,7 @@ namespace PokemonUnity.Character
 				int result = 0;
 				for (int i = 0; i < Pokemons.Length; i++)
 				{
-					if (Pokemons[i] != null || Pokemons[i].Species != PokemonUnity.Pokemons.NONE)
+					if (Pokemons[i] != null && Pokemons[i].Species != PokemonUnity.Pokemons.NONE)
 					{
 						result += 1;
 					}

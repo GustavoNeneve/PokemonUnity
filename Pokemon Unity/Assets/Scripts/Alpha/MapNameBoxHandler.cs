@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MapNameBoxHandler : MonoBehaviour
 {
     private Transform mapName;
-    private Texture mapNameBox;
+    private RawImage mapNameBox;
     private Text mapNameText;
     private Text mapNameTextShadow;
 
@@ -19,9 +19,9 @@ public class MapNameBoxHandler : MonoBehaviour
     void Awake()
     {
         mapName = transform.Find("MapName");
-        //mapNameBox = mapName.GetComponent<GUITexture>();
-        //mapNameText = mapName.Find("BoxText").GetComponent<GUIText>();
-        //mapNameTextShadow = mapName.Find("BoxTextShadow").GetComponent<GUIText>();
+        mapNameBox = mapName.GetComponent<RawImage>();
+        mapNameText = mapName.Find("BoxText").GetComponent<Text>();
+        mapNameTextShadow = mapName.Find("BoxTextShadow").GetComponent<Text>();
     }
 
     void Start()
@@ -32,7 +32,7 @@ public class MapNameBoxHandler : MonoBehaviour
     public void display(Texture boxTexture, string name, Color textColor)
     {
         //do not display when on a map of the same name
-        if (mapNameText.text != name)
+        if (mapNameText != null && mapNameText.text != name)
         {
             if (mainDisplay != null)
             {
@@ -58,10 +58,19 @@ public class MapNameBoxHandler : MonoBehaviour
                 yield return null;
             }
         }
-        //mapNameBox.texture = boxTexture;
-        mapNameText.text = name;
-        mapNameTextShadow.text = name;
-        mapNameText.color = textColor;
+        if (mapNameBox != null)
+        {
+            mapNameBox.texture = boxTexture;
+        }
+        if (mapNameText != null)
+        {
+            mapNameText.text = name;
+            mapNameText.color = textColor;
+        }
+        if (mapNameTextShadow != null)
+        {
+            mapNameTextShadow.text = name;
+        }
 
         increment = 0f;
         while (increment < 1)

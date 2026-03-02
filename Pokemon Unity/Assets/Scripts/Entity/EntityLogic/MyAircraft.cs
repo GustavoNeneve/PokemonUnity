@@ -18,20 +18,12 @@ namespace PokemonUnity
         private Rect m_PlayerMoveBoundary = default(Rect);
         private Vector3 m_TargetPosition = Vector3.zero;
 
-#if UNITY_2017_3_OR_NEWER
         protected override void OnInit(object userData)
-#else
-        protected internal override void OnInit(object userData)
-#endif
         {
             base.OnInit(userData);
         }
 
-#if UNITY_2017_3_OR_NEWER
         protected override void OnShow(object userData)
-#else
-        protected internal override void OnShow(object userData)
-#endif
         {
             base.OnShow(userData);
 
@@ -42,7 +34,7 @@ namespace PokemonUnity
                 return;
             }
 
-            ScrollableBackground sceneBackground = FindObjectOfType<ScrollableBackground>();
+            ScrollableBackground sceneBackground = FindAnyObjectByType<ScrollableBackground>();
             if (sceneBackground == null)
             {
                 Log.Warning("Can not find scene background.");
@@ -53,11 +45,7 @@ namespace PokemonUnity
                 sceneBackground.PlayerMoveBoundary.bounds.size.x, sceneBackground.PlayerMoveBoundary.bounds.size.z);
         }
 
-#if UNITY_2017_3_OR_NEWER
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-#else
-        protected internal override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-#endif
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 

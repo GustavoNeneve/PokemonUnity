@@ -53,13 +53,12 @@ public class RotatableGUIItem : MonoBehaviour
     {
         BeginRenderTextureGUI(m_TargetTexture);
 
-        if (Application.isEditor)
+        if (Application.isEditor || texture != null)
         {
             UpdateSettings();
         }
         if (texture != null)
         {
-            UpdateSettings();
             Matrix4x4 matrixBackup = GUI.matrix;
             GUIUtility.RotateAroundPivot(angle, pivot);
             if (material == null)
@@ -72,7 +71,6 @@ public class RotatableGUIItem : MonoBehaviour
                 Graphics.DrawTexture(rect, texture, new Rect(0, 0, 1, 1), 0, 0, 0, 0, color, material);
             }
             GUI.matrix = matrixBackup;
-            GUI.depth = Mathf.FloorToInt(transform.localPosition.z) * -1;
         }
 
         EndRenderTextureGUI();

@@ -37,7 +37,7 @@ namespace PokemonUnity
             GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
             GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
 
-            SceneBackground = Object.FindObjectOfType<ScrollableBackground>();
+            SceneBackground = Object.FindAnyObjectByType<ScrollableBackground>();
             if (SceneBackground == null)
             {
                 Log.Warning("Can not find scene background.");
