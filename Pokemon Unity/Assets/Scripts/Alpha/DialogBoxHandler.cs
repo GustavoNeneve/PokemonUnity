@@ -81,11 +81,11 @@ public class DialogBoxHandler : MonoBehaviour
 
     void Start()
     {
-        if (hideDialogOnStart)
+        if (hideDialogOnStart && DialogBox != null)
         {
             DialogBox.SetActive(false);
         }
-        if (hideChoiceOnStart)
+        if (hideChoiceOnStart && ChoiceBox != null)
         {
             ChoiceBox.SetActive(false);
         }
